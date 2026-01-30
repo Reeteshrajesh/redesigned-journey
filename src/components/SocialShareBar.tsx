@@ -78,7 +78,7 @@ export function SocialShareBar({ title, url }: { title: string; url: string }) {
       {/* Add as Preferred Source on Google - Compact version on same line */}
       <button
         onClick={() => {
-          window.open(`https://www.google.com/preferences?hl=en#add_site:${window.location.hostname}`, '_blank')
+          window.open(`https://www.google.com/preferences/source?q=${window.location.hostname}`, '_blank')
         }}
         className="flex items-center gap-1.5 px-3 py-2 rounded-full bg-white border border-gray-300 hover:bg-gray-50 transition-colors text-xs font-medium text-gray-700"
         aria-label="Add as a Preferred Source on Google"

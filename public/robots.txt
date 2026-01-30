@@ -10,7 +10,11 @@ Allow: /
 Sitemap: https://finscann.com/sitemap.xml
 Sitemap: https://finscann.com/sitemap-news.xml
 Sitemap: https://finscann.com/sitemap-articles.xml
-Sitemap: https://finscann.com/sitemap-images.xml
+
+# RSS Feed locations
+# RSS feeds for content syndication and Chrome Follow feature
+Sitemap: https://finscann.com/feed.xml
+Sitemap: https://finscann.com/rss.xml
 
 # Additional AI Crawlers (explicitly allowing for maximum reach)
 # OpenAI
