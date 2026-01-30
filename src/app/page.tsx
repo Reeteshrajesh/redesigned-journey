@@ -3,16 +3,18 @@ import { TrendingUp, ArrowRight, Clock } from 'lucide-react'
 import { fetchFeaturedArticles, fetchRecentArticles } from '@/lib/api'
 import ArticleCard from '@/components/ArticleCard'
 
-export const revalidate = 60 // ISR: Revalidate every 60 seconds
+export const revalidate = 300 // ISR: Revalidate every 5 minutes for better caching
+export const dynamic = 'force-static' // Force static generation
+export const fetchCache = 'force-cache' // Aggressive caching
 
 export default async function HomePage() {
   // Fetch trending articles for the top 3 featured section
   const featuredArticles = await fetchFeaturedArticles(3)
 
-  // Fetch recent articles for the grid section
-  const articles = await fetchRecentArticles(40)
+  // Fetch only 12 articles initially (reduced from 40 to minimize RSC payload)
+  const articles = await fetchRecentArticles(12)
 
-  const visibleArticles = articles.slice(0, 18)
+  const visibleArticles = articles
 
   return (
     <>

@@ -62,7 +62,7 @@ export default function ArticleCard({ article, priority = false, variant = 'defa
       <Link href={`/articles/${category}/${slug}`} className="group block">
         <article className="bg-gradient-to-br from-white/90 to-gray-50/90 backdrop-blur-md rounded-2xl border border-gray-200/60 overflow-hidden hover:from-gray-50/90 hover:to-gray-100/90 hover:border-blue-500/40 transition-all duration-500 group-hover:scale-[1.02] group-hover:-translate-y-1 shadow-2xl hover:shadow-blue-500/20">
           {imageUrl && (
-            <div className="relative h-48 overflow-hidden">
+            <div className="relative h-48 overflow-hidden bg-gray-100">
               <Image
                 src={imageUrl}
                 alt={imageAltText}
@@ -70,6 +70,7 @@ export default function ArticleCard({ article, priority = false, variant = 'defa
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="object-cover object-center group-hover:scale-110 transition-transform duration-700"
                 priority={priority}
+                loading={priority ? 'eager' : 'lazy'}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500"></div>
               <div className="absolute bottom-3 left-3">
@@ -114,7 +115,7 @@ export default function ArticleCard({ article, priority = false, variant = 'defa
     <Link href={`/articles/${category}/${slug}`} className="group block">
       <article className="h-full flex flex-col bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-xl hover:border-blue-500/40 transition-all duration-300 group-hover:scale-[1.02] group-hover:-translate-y-1">
         {imageUrl && (
-          <div className="relative aspect-video overflow-hidden">
+          <div className="relative aspect-video overflow-hidden bg-gray-100">
             <Image
               src={imageUrl}
               alt={imageAltText}
@@ -122,6 +123,7 @@ export default function ArticleCard({ article, priority = false, variant = 'defa
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               priority={priority}
+              loading={priority ? 'eager' : 'lazy'}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300"></div>
             <div className="absolute bottom-3 left-3">
