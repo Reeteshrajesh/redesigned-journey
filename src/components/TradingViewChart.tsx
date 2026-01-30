@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, memo } from 'react'
+import { useEffect, useRef, memo, useState } from 'react'
 
 interface TradingViewChartProps {
   symbol: string
@@ -18,8 +18,30 @@ declare global {
 const TradingViewChart = memo(({ symbol, height = 500 }: TradingViewChartProps) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const scriptLoadedRef = useRef(false)
+  const [isVisible, setIsVisible] = useState(false)
+
+  // Intersection Observer to load chart only when visible
+  useEffect(() => {
+    if (!containerRef.current) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !isVisible) {
+            setIsVisible(true)
+          }
+        })
+      },
+      { rootMargin: '100px' } // Load 100px before visible
+    )
+
+    observer.observe(containerRef.current)
+
+    return () => observer.disconnect()
+  }, [isVisible])
 
   useEffect(() => {
+    if (!isVisible) return // Don't load until visible
     // Create unique container ID based on symbol
     const containerId = `tradingview_${symbol.replace(/[^a-zA-Z0-9]/g, '_')}`
 

@@ -16,6 +16,7 @@ import RelatedKeywordLinks from '@/components/RelatedKeywordLinks'
 import EnhancedMarkdown from '@/components/EnhancedMarkdown'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import ReadingProgressBar from '@/components/ReadingProgressBar'
 
 export const revalidate = 60 // ISR: Revalidate every 60 seconds
 export const dynamicParams = true // Allow dynamic rendering for paths not in generateStaticParams
@@ -47,20 +48,20 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
   // Get the best image URL for social sharing (import at top)
   const { getBestImageUrl: getImageUrl } = await import('@/lib/imageMapping')
   const { SITE_URL } = await import('@/lib/config')
+  const { cleanArticleTitle, cleanMetadataText } = await import('@/lib/textCleaner')
   const imageUrl = getImageUrl(article)
   const articleUrl = `${SITE_URL}/articles/${category}/${slug}`
 
-  // Get the synopsis - ensure it's not too long for social sharing
-  const description = article.synopsis
-    ? article.synopsis.substring(0, 200)
-    : article.summary.substring(0, 200)
+  // Clean title and description for social sharing
+  const cleanTitle = cleanArticleTitle(article.article_title_optimised)
+  const description = cleanMetadataText(article.synopsis || article.summary, 200)
 
   return {
-    title: `${article.article_title_optimised} | Finscann`,
+    title: `${cleanTitle} | Finscann`,
     description,
-    keywords: `${category}, ${article.news_type}, financial news, stock market, ${article.article_title_optimised}`,
+    keywords: `${category}, ${article.news_type}, financial news, stock market, ${cleanTitle}`,
     openGraph: {
-      title: article.article_title_optimised,
+      title: cleanTitle,
       description,
       type: 'article',
       url: articleUrl,
@@ -79,7 +80,7 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
     },
     twitter: {
       card: 'summary_large_image',
-      title: article.article_title_optimised,
+      title: cleanTitle,
       description,
       images: [imageUrl],
       creator: '@finscann',
@@ -155,6 +156,9 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
   return (
     <div className="bg-white min-h-screen">
+      {/* Reading Progress Bar */}
+      <ReadingProgressBar />
+
       {/* Structured Data for SEO */}
       <ArticleStructuredData article={article} />
 
@@ -361,7 +365,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           </div>
 
           {/* Related Articles Sidebar */}
-          <div className="lg:sticky lg:top-6 lg:self-start">
+          <div className="lg:sticky lg:top-24 lg:self-start lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto">
             <RelatedArticles articles={relatedArticles} currentArticleId={article.id} title="You May Also Like" />
           </div>
         </div>

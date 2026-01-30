@@ -189,8 +189,8 @@ export default function TermsOfServicePage() {
         </p>
         <p>
           Email:{' '}
-          <a href="mailto:finscannquery@gmail.com" className="text-blue-600 hover:underline font-semibold">
-            finscannquery@gmail.com
+          <a href="mailto:contact@finscann.com" className="text-blue-600 hover:underline font-semibold">
+            contact@finscann.com
           </a>
         </p>
 

@@ -55,7 +55,7 @@ const faqs = [
   },
   {
     question: 'How can I contact Finscann for queries or feedback?',
-    answer: 'You can reach us via email at finscannquery@gmail.com, join our WhatsApp community, or connect through our Telegram channel. Visit our Contact page for all communication options. We typically respond within 24-48 hours.',
+    answer: 'You can reach us via email at contact@finscann.com, join our WhatsApp community, or connect through our Telegram channel. Visit our Contact page for all communication options. We typically respond within 24-48 hours.',
   },
 ]
 

@@ -60,8 +60,8 @@ export default function AboutUsPage() {
         <h2 className="text-2xl font-semibold text-gray-900 mt-8">Contact Us</h2>
         <p>
           Email:{' '}
-          <a href="mailto:finscannquery@gmail.com" className="text-blue-600 hover:underline">
-            finscannquery@gmail.com
+          <a href="mailto:contact@finscann.com" className="text-blue-600 hover:underline">
+            contact@finscann.com
           </a>
         </p>
       </div>

@@ -6,6 +6,7 @@ import { generateSlug, mapAPIToCategory } from '@/lib/utils'
 import { getBestImageUrl } from '@/lib/imageMapping'
 import { generateImageAltText } from '@/lib/imageAltText'
 import { timeAgoWithTooltip } from '@/lib/timeAgo'
+import { cleanArticleTitle, extractCleanExcerpt } from '@/lib/textCleaner'
 
 interface ArticleCardProps {
   article: Article
@@ -82,7 +83,7 @@ export default function ArticleCard({ article, priority = false, variant = 'defa
           )}
           <div className="p-5">
             <h3 className="text-lg font-bold text-gray-900 mb-3 line-clamp-2 leading-tight group-hover:text-blue-600 transition-colors">
-              {article.article_title_optimised}
+              {cleanArticleTitle(article.article_title_optimised)}
             </h3>
             <div className="flex items-center justify-between text-gray-600 text-xs">
               <div className="flex items-center gap-2">
@@ -135,11 +136,11 @@ export default function ArticleCard({ article, priority = false, variant = 'defa
         )}
         <div className="flex-1 flex flex-col p-5">
           <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-3 line-clamp-2 leading-tight group-hover:text-blue-600 transition-colors">
-            {article.article_title_optimised}
+            {cleanArticleTitle(article.article_title_optimised)}
           </h3>
           {(article.synopsis || article.summary) && (
             <p className="text-gray-600 text-sm mb-4 line-clamp-2 flex-1 leading-relaxed">
-              {article.synopsis || (article.summary ? article.summary.substring(0, 150) + '...' : '')}
+              {extractCleanExcerpt(article.synopsis || article.summary, 150)}
             </p>
           )}
           <div className="flex items-center justify-between text-xs text-gray-500 mt-auto pt-3 border-t border-gray-100">

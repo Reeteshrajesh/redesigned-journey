@@ -97,8 +97,8 @@ export default function DisclaimerPage() {
         <h2>Questions or Concerns?</h2>
         <p>
           If you have questions about this disclaimer, contact us at:{' '}
-          <a href="mailto:finscannquery@gmail.com" className="text-blue-600 hover:underline font-semibold">
-            finscannquery@gmail.com
+          <a href="mailto:contact@finscann.com" className="text-blue-600 hover:underline font-semibold">
+            contact@finscann.com
           </a>
         </p>
 

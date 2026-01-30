@@ -11,8 +11,8 @@ export default async function HomePage() {
   // Fetch trending articles for the top 3 featured section
   const featuredArticles = await fetchFeaturedArticles(3)
 
-  // Fetch only 12 articles initially (reduced from 40 to minimize RSC payload)
-  const articles = await fetchRecentArticles(12)
+  // Fetch 21 articles for homepage (balanced between performance and content)
+  const articles = await fetchRecentArticles(21)
 
   const visibleArticles = articles
 

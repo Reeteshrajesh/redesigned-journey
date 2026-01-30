@@ -101,11 +101,11 @@ export default function Footer() {
               <h3 className="text-sm font-bold text-gray-900 mb-2">Contact Editorial Team</h3>
               <p className="text-xs text-gray-600 mb-4">Have a news tip, correction, or partnership query? Reach out to us.</p>
               <div className="flex flex-col sm:flex-row gap-2">
-                <a href="mailto:finscannquery@gmail.com?subject=News%20Tip%20Submission" className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-medium transition-colors">
+                <a href="mailto:contact@finscann.com?subject=News%20Tip%20Submission" className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-medium transition-colors">
                   <Send className="h-3.5 w-3.5" />
                   Submit News Tip
                 </a>
-                <a href="mailto:finscannquery@gmail.com" className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-white hover:bg-gray-100 text-gray-700 border border-gray-200 rounded-lg text-xs font-medium transition-colors">
+                <a href="mailto:contact@finscann.com" className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-white hover:bg-gray-100 text-gray-700 border border-gray-200 rounded-lg text-xs font-medium transition-colors">
                   <Mail className="h-3.5 w-3.5" />
                   Contact Us
                 </a>

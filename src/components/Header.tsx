@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter, usePathname } from 'next/navigation'
 import { Search, Menu, X } from 'lucide-react'
+import CommunityBanner from './CommunityBanner'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -172,6 +173,9 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-40 bg-gray-50 border-b border-gray-200 transition-all duration-300">
+      {/* Community Banner */}
+      <CommunityBanner />
+
       {/* Market Ticker */}
       <div className="bg-gray-100 border-b border-gray-200 py-2 overflow-hidden min-h-[44px]">
         <div className="max-w-7xl mx-auto px-6">

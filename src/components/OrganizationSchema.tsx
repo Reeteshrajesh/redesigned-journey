@@ -26,7 +26,7 @@ export default function OrganizationSchema() {
         '@type': 'ContactPoint',
         telephone: '',
         contactType: 'Customer Service',
-        email: 'finscannquery@gmail.com',
+        email: 'contact@finscann.com',
         availableLanguage: ['English'],
         areaServed: 'Worldwide',
       },
