@@ -1,0 +1,137 @@
+# Finscann - Financial News & Market Analysis
+# https://finscann.com
+# Strategy: FULLY OPEN - Allow ALL bots, crawlers, and AI for maximum visibility
+
+# Allow ALL user agents - NO RESTRICTIONS
+User-agent: *
+Allow: /
+
+# Sitemap locations
+Sitemap: https://finscann.com/sitemap.xml
+Sitemap: https://finscann.com/sitemap-news.xml
+Sitemap: https://finscann.com/sitemap-articles.xml
+Sitemap: https://finscann.com/sitemap-images.xml
+
+# Additional AI Crawlers (explicitly allowing for maximum reach)
+# OpenAI
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic Claude
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Google AI
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+# Microsoft/Bing
+User-agent: Bingbot
+Allow: /
+
+# Meta/Facebook
+User-agent: FacebookBot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Apple
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Common Crawl
+User-agent: CCBot
+Allow: /
+
+# Amazon
+User-agent: Amazonbot
+Allow: /
+
+# Cohere
+User-agent: cohere-ai
+Allow: /
+
+# Other Search Engines
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# News Aggregators
+User-agent: NewsNow
+Allow: /
+
+User-agent: Flipboard
+Allow: /
+
+# Social Media
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+# SEO Tools
+User-agent: SemrushBot
+Allow: /
+
+User-agent: AhrefsBot
+Allow: /
+
+User-agent: DotBot
+Allow: /
+
+User-agent: MJ12bot
+Allow: /
+
+# Other AI/ML Bots
+User-agent: YouBot
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: ImagesiftBot
+Allow: /
+
+User-agent: Omgilibot
+Allow: /
+
+# NO DISALLOWED PATHS - Everything is accessible
+# Maximum visibility and indexing for all content

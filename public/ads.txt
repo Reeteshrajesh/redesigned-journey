@@ -1,0 +1,9 @@
+# ads.txt file for Finscann.com
+# This file is used by ad networks to verify authorized sellers
+# Update this file with your actual Publisher ID from Google AdSense
+
+# Google AdSense
+google.com, pub-4434937912141944, DIRECT, f08c47fec0942fa0
+
+# Add any other ad networks here in the future
+# Format: domain, publisher_id, DIRECT/RESELLER, TAG_ID
