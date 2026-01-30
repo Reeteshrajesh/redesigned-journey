@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import GoogleAnalytics from '@/components/GoogleAnalytics'
+import GoogleTagManager, { GTMNoScript } from '@/components/GoogleTagManager'
 import OrganizationSchema from '@/components/OrganizationSchema'
 import '@/styles/globals.css'
 
@@ -82,9 +83,11 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
         <GoogleAnalytics />
+        <GoogleTagManager />
         <OrganizationSchema />
       </head>
       <body className="flex flex-col min-h-screen">
+        <GTMNoScript />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

@@ -104,7 +104,7 @@ const TradingViewChart = memo(({ symbol, height = 500 }: TradingViewChartProps) 
         containerRef.current.innerHTML = ''
       }
     }
-  }, [symbol])
+  }, [symbol, isVisible])
 
   const containerId = `tradingview_${symbol.replace(/[^a-zA-Z0-9]/g, '_')}`
 

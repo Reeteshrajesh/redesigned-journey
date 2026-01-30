@@ -1,9 +1,35 @@
 'use client'
 
+import { useState, useEffect } from 'react'
+
 export default function CommunityBanner() {
+  const [isVisible, setIsVisible] = useState(true)
+
+  useEffect(() => {
+    // Check if banner was dismissed in last 7 days
+    const dismissed = localStorage.getItem('community_banner_dismissed')
+    if (dismissed) {
+      const dismissedTime = parseInt(dismissed)
+      const sevenDays = 7 * 24 * 60 * 60 * 1000 // 7 days in milliseconds
+      if (Date.now() - dismissedTime < sevenDays) {
+        setIsVisible(false)
+      } else {
+        // Clear old dismissal
+        localStorage.removeItem('community_banner_dismissed')
+      }
+    }
+  }, [])
+
+  const handleClose = () => {
+    localStorage.setItem('community_banner_dismissed', Date.now().toString())
+    setIsVisible(false)
+  }
+
+  if (!isVisible) return null
+
   return (
-    <div className="bg-gradient-to-r from-green-500 via-green-600 to-green-500 text-white py-3 px-6 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
+    <div id="community-banner" className="bg-gradient-to-r from-green-500 via-green-600 to-green-500 text-white py-3 px-6 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto flex items-center justify-between relative z-10">
         <div className="flex items-center gap-3">
           <span className="text-lg font-bold">📢 Get Market News 5 Mins Faster – Join Now!</span>
         </div>
@@ -37,10 +63,7 @@ export default function CommunityBanner() {
 
           {/* Close button */}
           <button
-            onClick={() => {
-              const banner = document.getElementById('community-banner')
-              if (banner) banner.style.display = 'none'
-            }}
+            onClick={handleClose}
             className="ml-2 text-white hover:text-gray-200 transition-colors"
             aria-label="Close banner"
           >
@@ -52,7 +75,7 @@ export default function CommunityBanner() {
       </div>
 
       {/* Animated background pattern */}
-      <div className="absolute inset-0 opacity-10">
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
         <div className="absolute inset-0" style={{
           backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
           backgroundSize: '20px 20px'

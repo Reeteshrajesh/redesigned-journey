@@ -365,7 +365,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           </div>
 
           {/* Related Articles Sidebar */}
-          <div className="lg:sticky lg:top-24 lg:self-start lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto">
+          <div className="lg:sticky lg:top-32 lg:self-start lg:max-h-[calc(100vh-9rem)] lg:overflow-y-auto">
             <RelatedArticles articles={relatedArticles} currentArticleId={article.id} title="You May Also Like" />
           </div>
         </div>
