@@ -225,7 +225,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                 <div className="flex items-center gap-3">
                   <SocialShareBar
                     title={article.article_title_optimised}
-                    url={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://snazzy-mermaid-bc897f.netlify.app'}/articles/${category}/${slug}`}
+                    url={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://finscann.com'}/articles/${category}/${slug}`}
                   />
                 </div>
               </div>
@@ -249,7 +249,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                 <div className="flex items-center gap-3 ml-auto">
                   <SocialShareBar
                     title={article.article_title_optimised}
-                    url={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://snazzy-mermaid-bc897f.netlify.app'}/articles/${category}/${slug}`}
+                    url={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://finscann.com'}/articles/${category}/${slug}`}
                   />
                 </div>
               </div>
