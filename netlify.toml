@@ -8,6 +8,7 @@
 [build.environment]
   NODE_VERSION = "20"
   NPM_FLAGS = "--legacy-peer-deps"
+  NEXT_PUBLIC_SITE_URL = "https://snazzy-mermaid-bc897f.netlify.app"
 
 # Redirect configuration for Next.js routes
 [[redirects]]

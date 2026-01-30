@@ -13,7 +13,7 @@ import { getBestImageUrl } from '@/lib/imageMapping'
 import ArticleStructuredData from '@/components/ArticleStructuredData'
 import Breadcrumbs from '@/components/Breadcrumbs'
 import RelatedKeywordLinks from '@/components/RelatedKeywordLinks'
-// import EnhancedMarkdown from '@/components/EnhancedMarkdown'
+import EnhancedMarkdown from '@/components/EnhancedMarkdown'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 
@@ -46,16 +46,24 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
 
   // Get the best image URL for social sharing (import at top)
   const { getBestImageUrl: getImageUrl } = await import('@/lib/imageMapping')
+  const { SITE_URL } = await import('@/lib/config')
   const imageUrl = getImageUrl(article)
+  const articleUrl = `${SITE_URL}/articles/${category}/${slug}`
+
+  // Get the synopsis - ensure it's not too long for social sharing
+  const description = article.synopsis
+    ? article.synopsis.substring(0, 200)
+    : article.summary.substring(0, 200)
 
   return {
     title: `${article.article_title_optimised} | Finscann`,
-    description: article.synopsis || article.summary,
+    description,
     keywords: `${category}, ${article.news_type}, financial news, stock market, ${article.article_title_optimised}`,
     openGraph: {
       title: article.article_title_optimised,
-      description: article.synopsis || article.summary,
+      description,
       type: 'article',
+      url: articleUrl,
       publishedTime: article.created_at,
       modifiedTime: article.updated_at || article.created_at,
       authors: article.source ? [article.source] : undefined,
@@ -72,16 +80,16 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
     twitter: {
       card: 'summary_large_image',
       title: article.article_title_optimised,
-      description: article.synopsis || article.summary,
+      description,
       images: [imageUrl],
       creator: '@finscann',
       site: '@finscann',
     },
     // Additional metadata for Google Discover
     alternates: {
-      canonical: `https://finscann.com/articles/${category}/${slug}`,
+      canonical: articleUrl,
       types: {
-        'application/atom+xml': `https://finscann.com/articles/${category}/${slug}/amp`,
+        'application/atom+xml': `${articleUrl}/amp`,
       },
     },
     other: {
@@ -89,7 +97,7 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
       'article:modified_time': article.updated_at || article.created_at,
       'article:author': article.source || article.author || 'Finscann Team',
       'article:section': category,
-      amphtml: `https://finscann.com/articles/${category}/${slug}/amp`,
+      amphtml: `${articleUrl}/amp`,
     },
   }
 }
@@ -209,7 +217,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
               <SocialShareBar
                 title={article.article_title_optimised}
-                url={typeof window !== 'undefined' ? window.location.href : ''}
+                url={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://snazzy-mermaid-bc897f.netlify.app'}/articles/${category}/${slug}`}
               />
             </div>
 
@@ -258,9 +266,10 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
           {/* Article Summary */}
           <div className="mb-10">
-            <div className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-headings:mb-4 prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-5 prose-ul:my-4 prose-ul:space-y-2 prose-ol:my-4 prose-ol:space-y-2 prose-li:text-gray-700 prose-li:leading-relaxed prose-strong:text-gray-900 prose-strong:font-semibold prose-em:text-gray-700 prose-blockquote:border-l-4 prose-blockquote:border-blue-500 prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-gray-600">
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>{article.summary}</ReactMarkdown>
-            </div>
+            <EnhancedMarkdown
+              content={article.summary}
+              className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-headings:mb-6 prose-p:text-gray-700 prose-p:leading-[1.8] prose-p:mb-6 prose-ul:my-6 prose-ul:space-y-3 prose-ol:my-6 prose-ol:space-y-3 prose-li:text-gray-700 prose-li:leading-[1.8] prose-strong:text-gray-900 prose-strong:font-semibold prose-em:text-gray-700 prose-blockquote:border-l-4 prose-blockquote:border-blue-500 prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-gray-600 prose-blockquote:my-6"
+            />
           </div>
 
           {/* Related Keyword Links - Internal SEO */}
