@@ -15,10 +15,11 @@ export default function Footer() {
             <Link href="/" className="inline-block">
               <Image
                 src="/finscannlogo.png"
-                alt="Finscann"
+                alt="Finscann Logo"
                 width={140}
-                height={36}
-                className="h-8 sm:h-9 w-auto"
+                height={47}
+                className="h-8 sm:h-9 w-auto object-contain"
+                unoptimized
               />
             </Link>
             <p className="text-sm text-gray-600 leading-relaxed">

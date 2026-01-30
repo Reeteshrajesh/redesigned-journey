@@ -194,35 +194,65 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             </h1>
 
             {/* Author and Social Sharing Bar */}
-            <div className="flex items-center justify-between mb-8 py-4 border-y border-gray-200">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center">
-                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                  </svg>
+            <div className="mb-8 py-4 border-y border-gray-200">
+              {/* Mobile Layout - Traditional */}
+              <div className="sm:hidden">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center">
+                      <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-gray-900">
+                        {article.author || 'Finscann Team'}
+                      </p>
+                      <p className="text-xs text-gray-500">
+                        Published at: {new Date(article.created_at).toLocaleDateString('en-US', {
+                          day: 'numeric',
+                          month: 'long',
+                          year: 'numeric'
+                        })}, {new Date(article.created_at).toLocaleTimeString('en-US', {
+                          hour: 'numeric',
+                          minute: '2-digit',
+                          hour12: true
+                        })}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-sm font-semibold text-gray-900">
-                    {article.author || 'Finscann Team'}
-                  </p>
-                  <p className="text-xs text-gray-500">
-                    Published at: {new Date(article.created_at).toLocaleDateString('en-US', {
-                      day: 'numeric',
-                      month: 'long',
-                      year: 'numeric'
-                    })}, {new Date(article.created_at).toLocaleTimeString('en-US', {
-                      hour: 'numeric',
-                      minute: '2-digit',
-                      hour12: true
-                    })}
-                  </p>
+                <div className="flex items-center gap-3">
+                  <SocialShareBar
+                    title={article.article_title_optimised}
+                    url={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://snazzy-mermaid-bc897f.netlify.app'}/articles/${category}/${slug}`}
+                  />
                 </div>
               </div>
 
-              <SocialShareBar
-                title={article.article_title_optimised}
-                url={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://snazzy-mermaid-bc897f.netlify.app'}/articles/${category}/${slug}`}
-              />
+              {/* Desktop Layout - Compact */}
+              <div className="hidden sm:flex sm:items-center gap-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center flex-shrink-0">
+                    <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-xs text-gray-500">Reviewed by</p>
+                    <p className="text-sm font-semibold text-gray-900 truncate">
+                      {article.author || 'Finscann Team'}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3 ml-auto">
+                  <SocialShareBar
+                    title={article.article_title_optimised}
+                    url={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://snazzy-mermaid-bc897f.netlify.app'}/articles/${category}/${slug}`}
+                  />
+                </div>
+              </div>
             </div>
 
             {/* Synopsis */}

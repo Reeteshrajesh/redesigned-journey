@@ -250,11 +250,12 @@ export default function Header() {
         <Link href="/" className="flex items-center gap-3">
           <Image
             src="/finscannlogo.png"
-            alt="Finscann"
+            alt="Finscann Logo"
             width={160}
-            height={40}
-            className="h-8 md:h-10 w-auto"
+            height={54}
+            className="h-8 md:h-10 w-auto object-contain"
             priority
+            unoptimized
           />
           <span className="flex items-center gap-1.5 bg-red-600 text-white text-xs font-bold px-2.5 py-1 rounded-md animate-pulse">
             <span className="w-2 h-2 bg-white rounded-full animate-ping absolute"></span>
