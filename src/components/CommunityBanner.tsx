@@ -53,7 +53,7 @@ export default function CommunityBanner() {
 
           {/* Telegram Button */}
           <a
-            href="https://t.me/finscann"
+            href="https://t.me/+UkWVI7tLj743NTI1"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1 sm:gap-2 bg-blue-500 text-white px-2 sm:px-4 py-1 sm:py-2 rounded-lg text-xs sm:text-sm font-semibold hover:bg-blue-600 transition-all shadow-md hover:shadow-lg"
