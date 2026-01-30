@@ -41,11 +41,7 @@ const nextConfig = {
   // Experimental features for better performance
   experimental: {
     optimizePackageImports: ['lucide-react'],
-    optimizeCss: true, // Optimize CSS bundle size
   },
-
-  // Output optimizations
-  swcMinify: true, // Use SWC for faster minification
 
   images: {
     remotePatterns: [
