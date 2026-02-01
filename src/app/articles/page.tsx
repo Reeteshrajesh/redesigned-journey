@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import { fetchRecentArticles } from '@/lib/api'
 import CategoryFilter from '@/components/Articles/CategoryFilter'
 
-export const revalidate = 60 // ISR: Revalidate every 60 seconds
+export const revalidate = 10 // ISR: Revalidate every 10 seconds for real-time news
 
 export const metadata: Metadata = {
   title: 'All Financial News Articles - Latest Market Updates | Finscann',

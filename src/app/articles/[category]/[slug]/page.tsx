@@ -18,7 +18,7 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import ReadingProgressBar from '@/components/ReadingProgressBar'
 
-export const revalidate = 60 // ISR: Revalidate every 60 seconds
+export const revalidate = 10 // ISR: Revalidate every 10 seconds for real-time news
 export const dynamicParams = true // Allow dynamic rendering for paths not in generateStaticParams
 
 interface ArticlePageProps {

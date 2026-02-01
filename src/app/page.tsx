@@ -3,9 +3,9 @@ import { TrendingUp, ArrowRight, Clock } from 'lucide-react'
 import { fetchFeaturedArticles, fetchRecentArticles } from '@/lib/api'
 import ArticleCard from '@/components/ArticleCard'
 
-export const revalidate = 300 // ISR: Revalidate every 5 minutes for better caching
-export const dynamic = 'force-static' // Force static generation
-export const fetchCache = 'force-cache' // Aggressive caching
+export const revalidate = 10 // ISR: Revalidate every 10 seconds for real-time news
+export const dynamic = 'force-dynamic' // Enable dynamic generation for fresh content
+export const fetchCache = 'default-cache' // Balanced caching for news updates
 
 export default async function HomePage() {
   // Fetch trending articles for the top 3 featured section

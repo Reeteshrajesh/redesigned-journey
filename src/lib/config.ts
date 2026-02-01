@@ -17,4 +17,5 @@ export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''
 export const ADSENSE_ID = process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_ID || ''
 
 // Cache revalidation (seconds)
-export const REVALIDATE_TIME = 60
+// Reduced to 10 seconds for real-time news updates
+export const REVALIDATE_TIME = 10

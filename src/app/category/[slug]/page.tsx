@@ -7,7 +7,7 @@ import ArticleGrid from '@/components/ArticleGrid'
 import TrendingNow from '@/components/TrendingNow'
 import Breadcrumbs from '@/components/Breadcrumbs'
 
-export const revalidate = 60 // ISR: Revalidate every 60 seconds
+export const revalidate = 10 // ISR: Revalidate every 10 seconds for real-time news
 
 interface CategoryPageProps {
   params: Promise<{

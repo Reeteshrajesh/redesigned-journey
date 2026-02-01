@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
 }
 
-export const revalidate = 30 // Revalidate every 30 seconds for very fresh content
+export const revalidate = 5 // Revalidate every 5 seconds for real-time breaking news
 
 export default async function RecentPage() {
   // Fetch the most recent articles
