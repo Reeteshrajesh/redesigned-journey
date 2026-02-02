@@ -1,10 +1,21 @@
 # Finscann - Financial News & Market Analysis
 # https://finscann.com
-# Strategy: FULLY OPEN - Allow ALL bots, crawlers, and AI for maximum visibility
+
+# Host declaration for SEO
+Host: https://finscann.com
+
+# Google News bot (explicit for news site priority)
+User-agent: Googlebot-News
+Allow: /
 
 # Allow ALL user agents - NO RESTRICTIONS
 User-agent: *
 Allow: /
+
+# Block technical/private paths to save crawl budget
+Disallow: /_next/static/
+Disallow: /api/
+Disallow: /.well-known/
 
 # Sitemap locations
 Sitemap: https://finscann.com/sitemap.xml
@@ -12,130 +23,5 @@ Sitemap: https://finscann.com/sitemap-news.xml
 Sitemap: https://finscann.com/sitemap-articles.xml
 
 # RSS Feed locations
-# RSS feeds for content syndication and Chrome Follow feature
 Sitemap: https://finscann.com/feed.xml
 Sitemap: https://finscann.com/rss.xml
-
-# Additional AI Crawlers (explicitly allowing for maximum reach)
-# OpenAI
-User-agent: GPTBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-# Anthropic Claude
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
-User-agent: Claude-Web
-Allow: /
-
-# Google AI
-User-agent: Google-Extended
-Allow: /
-
-User-agent: Googlebot
-Allow: /
-
-# Microsoft/Bing
-User-agent: Bingbot
-Allow: /
-
-# Meta/Facebook
-User-agent: FacebookBot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
-# Perplexity AI
-User-agent: PerplexityBot
-Allow: /
-
-# Apple
-User-agent: Applebot
-Allow: /
-
-User-agent: Applebot-Extended
-Allow: /
-
-# Common Crawl
-User-agent: CCBot
-Allow: /
-
-# Amazon
-User-agent: Amazonbot
-Allow: /
-
-# Cohere
-User-agent: cohere-ai
-Allow: /
-
-# Other Search Engines
-User-agent: Slurp
-Allow: /
-
-User-agent: DuckDuckBot
-Allow: /
-
-User-agent: Baiduspider
-Allow: /
-
-User-agent: YandexBot
-Allow: /
-
-# News Aggregators
-User-agent: NewsNow
-Allow: /
-
-User-agent: Flipboard
-Allow: /
-
-# Social Media
-User-agent: Twitterbot
-Allow: /
-
-User-agent: LinkedInBot
-Allow: /
-
-User-agent: WhatsApp
-Allow: /
-
-User-agent: TelegramBot
-Allow: /
-
-# SEO Tools
-User-agent: SemrushBot
-Allow: /
-
-User-agent: AhrefsBot
-Allow: /
-
-User-agent: DotBot
-Allow: /
-
-User-agent: MJ12bot
-Allow: /
-
-# Other AI/ML Bots
-User-agent: YouBot
-Allow: /
-
-User-agent: Diffbot
-Allow: /
-
-User-agent: Bytespider
-Allow: /
-
-User-agent: ImagesiftBot
-Allow: /
-
-User-agent: Omgilibot
-Allow: /
-
-# NO DISALLOWED PATHS - Everything is accessible
-# Maximum visibility and indexing for all content
