@@ -55,7 +55,7 @@ export interface ArticlesResponse {
 }
 
 // Category Mapping
-export type CategorySlug = 'stock' | 'market' | 'ipo' | 'crypto' | 'commodities' | 'general' | 'global-news' | 'budget'
+export type CategorySlug = 'stock' | 'market' | 'ipo' | 'crypto' | 'commodities' | 'general' | 'global-news' | 'startup-related'
 
 export const CATEGORY_MAP: Record<CategorySlug, string> = {
   stock: 'stock-related',
@@ -65,7 +65,7 @@ export const CATEGORY_MAP: Record<CategorySlug, string> = {
   commodities: 'commodities-related',
   general: 'other',
   'global-news': 'global-news',
-  budget: 'budget-related',
+  'startup-related': 'startup-related',
 }
 
 export const REVERSE_CATEGORY_MAP: Record<string, CategorySlug> = {
@@ -78,8 +78,8 @@ export const REVERSE_CATEGORY_MAP: Record<string, CategorySlug> = {
   other: 'general',
   'global-news': 'global-news',
   'global-stocks': 'stock', // Map global stocks to stock category
-  budget: 'budget',
-  'budget-related': 'budget',
+  'startup-related': 'startup-related',
+  'budget-related': 'startup-related', // Map budget to startup for legacy support
   'dividend-related': 'stock', // Dividends are stock-related
   'merger-related': 'stock', // Mergers are stock-related
   'policy-related': 'general', // Policy news goes to general

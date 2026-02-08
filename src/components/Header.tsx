@@ -166,7 +166,7 @@ export default function Header() {
     { name: 'IPO', path: '/category/ipo', available: true, isNew: false },
     { name: 'Crypto', path: '/category/crypto', available: true, isNew: false },
     { name: 'Global News', path: '/category/global-news', available: true, isNew: true },
-    { name: 'Budget', path: '/category/budget', available: true, isNew: true },
+    { name: 'Startup', path: '/category/startup-related', available: true, isNew: true },
     { name: 'All News', path: '/articles', available: true, isNew: false },
     { name: 'About', path: '/about-us', available: true, isNew: false },
   ]
