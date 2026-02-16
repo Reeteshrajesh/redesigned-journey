@@ -66,6 +66,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
+    canonical: 'https://finscann.com',
     types: {
       'application/rss+xml': [
         { url: '/feed.xml', title: 'Finscann RSS Feed' },

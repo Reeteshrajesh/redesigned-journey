@@ -40,7 +40,7 @@ export default function CommunityBanner() {
         <div className="flex items-center gap-1.5 sm:gap-3 flex-shrink-0">
           {/* WhatsApp Button */}
           <a
-            href="https://whatsapp.com/channel/0029VayVCP42LKZq1AxfLO3N"
+            href="https://chat.whatsapp.com/E7ilDaGA4yr1wKTYFOQ63q?mode=gi_c"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1 sm:gap-2 bg-white text-green-600 px-2 sm:px-4 py-1 sm:py-2 rounded-lg text-xs sm:text-sm font-semibold hover:bg-green-50 transition-all shadow-md hover:shadow-lg"

@@ -43,6 +43,9 @@ export default function ArticleStructuredData({ article }: ArticleStructuredData
     },
     articleSection: category,
     keywords: article.related_tags || article.news_type,
+    inLanguage: 'en-IN',
+    isAccessibleForFree: true,
+    genre: 'Financial News',
     ...(article.company_name && {
       about: {
         '@type': 'Organization',

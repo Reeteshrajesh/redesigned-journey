@@ -17,6 +17,8 @@ import EnhancedMarkdown from '@/components/EnhancedMarkdown'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import ReadingProgressBar from '@/components/ReadingProgressBar'
+import AuthorBio from '@/components/AuthorBio'
+import FinancialDisclaimer from '@/components/FinancialDisclaimer'
 
 export const revalidate = 10 // ISR: Revalidate every 10 seconds for real-time news
 export const dynamicParams = true // Allow dynamic rendering for paths not in generateStaticParams
@@ -305,6 +307,12 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
               className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-headings:mb-6 prose-p:text-gray-700 prose-p:leading-[1.8] prose-p:mb-6 prose-ul:my-6 prose-ul:space-y-3 prose-ol:my-6 prose-ol:space-y-3 prose-li:text-gray-700 prose-li:leading-[1.8] prose-strong:text-gray-900 prose-strong:font-semibold prose-em:text-gray-700 prose-blockquote:border-l-4 prose-blockquote:border-blue-500 prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-gray-600 prose-blockquote:my-6"
             />
           </div>
+
+          {/* Author Bio - E-E-A-T Signal */}
+          <AuthorBio author={article.author} source={article.source} />
+
+          {/* Financial Disclaimer - YMYL Compliance */}
+          <FinancialDisclaimer />
 
           {/* Related Keyword Links - Internal SEO */}
           {allArticles && allArticles.length > 0 && (

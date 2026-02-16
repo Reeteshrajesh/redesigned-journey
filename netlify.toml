@@ -13,6 +13,25 @@
   NEXT_PUBLIC_GTM_ID = "GTM-N468HJZX"
   NEXT_PUBLIC_GOOGLE_ADSENSE_ID = "ca-pub-4434937912141944"
 
+# Force HTTPS redirect (fix redirect chain issues)
+[[redirects]]
+  from = "http://finscann.com/*"
+  to = "https://finscann.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.finscann.com/*"
+  to = "https://finscann.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.finscann.com/*"
+  to = "https://finscann.com/:splat"
+  status = 301
+  force = true
+
 # Redirect configuration for Next.js routes
 [[redirects]]
   from = "/*"

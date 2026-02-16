@@ -70,7 +70,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${SITE_URL}/category/budget`,
+      url: `${SITE_URL}/category/startup-related`,
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 0.9,

@@ -38,6 +38,10 @@ const faqs = [
     answer: 'Yes, we source our news from verified and reputable sources. Each article includes proper attribution and we maintain strict editorial standards. However, we recommend cross-referencing important information before making investment decisions.',
   },
   {
+    question: 'Does Finscann use AI to generate content?',
+    answer: 'Yes, some articles on Finscann are generated using AI technology. All AI-generated articles are clearly labeled and reviewed by our editorial team for accuracy. We use AI to provide timely coverage of breaking financial news while maintaining quality through human oversight. You can identify AI-generated content by the author attribution and disclosure notice.',
+  },
+  {
     question: 'What is the difference between Stock News and Market News?',
     answer: 'Stock News focuses on individual company-specific updates like earnings, mergers, dividends, and management changes. Market News covers broader market trends, indices performance, sector movements, and macroeconomic factors affecting the overall market.',
   },

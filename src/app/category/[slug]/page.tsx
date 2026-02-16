@@ -35,14 +35,21 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ')
 
+  const { SITE_URL } = await import('@/lib/config')
+  const categoryUrl = `${SITE_URL}/category/${slug}`
+
   return {
     title: `${categoryTitle} News | Finscann`,
     description: `Latest ${categoryTitle.toLowerCase()} news, updates, and market insights from Finscann.`,
     keywords: `${categoryTitle}, financial news, market updates, ${slug}`,
+    alternates: {
+      canonical: categoryUrl,
+    },
     openGraph: {
       title: `${categoryTitle} News | Finscann`,
       description: `Latest ${categoryTitle.toLowerCase()} news, updates, and market insights.`,
       type: 'website',
+      url: categoryUrl,
     },
   }
 }
