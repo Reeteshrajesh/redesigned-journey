@@ -3,18 +3,22 @@ import { SITE_URL } from '@/lib/config'
 export default function OrganizationSchema() {
   const organizationSchema = {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
+    '@type': 'NewsMediaOrganization',
     name: 'Finscann',
+    alternateName: 'Finscann News',
     url: SITE_URL,
     logo: {
       '@type': 'ImageObject',
       url: `${SITE_URL}/finscannlogo.png`,
-      width: 600,
-      height: 60,
+      width: 512,
+      height: 512,
+      caption: 'Finscann - Real-Time Financial News'
     },
     description:
-      'Real-time financial news, stock market updates, IPO alerts & investment insights. Stay ahead with Finscann.',
+      'Finscann is a trusted source for real-time financial news, stock market updates, IPO alerts, cryptocurrency insights, and investment analysis. We deliver timely, accurate financial information to help you stay ahead in the markets.',
     foundingDate: '2024',
+    slogan: 'Real-Time Financial News & Market Insights',
+    keywords: 'financial news, stock market, IPO news, crypto news, market analysis, investment insights',
     sameAs: [
       'https://x.com/finscann',
       'https://www.linkedin.com/company/finscann',
@@ -24,11 +28,14 @@ export default function OrganizationSchema() {
     contactPoint: [
       {
         '@type': 'ContactPoint',
-        telephone: '',
         contactType: 'Customer Service',
         email: 'contact@finscann.com',
-        availableLanguage: ['English'],
-        areaServed: 'Worldwide',
+        availableLanguage: ['English', 'en-US'],
+        areaServed: ['IN', 'US', 'GB', 'Worldwide'],
+        hoursAvailable: {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+        }
       },
     ],
     address: {
@@ -36,10 +43,25 @@ export default function OrganizationSchema() {
       addressCountry: 'IN',
       addressRegion: 'India',
     },
-    parentOrganization: {
-      '@type': 'Organization',
-      name: 'Finscann',
-    },
+    // E-E-A-T Signals
+    knowsAbout: [
+      'Financial News',
+      'Stock Market Analysis',
+      'IPO Updates',
+      'Cryptocurrency News',
+      'Market Trends',
+      'Investment Insights',
+      'Economic Analysis'
+    ],
+    // Publishing principles for transparency
+    publishingPrinciples: `${SITE_URL}/about-us`,
+    correctionsPolicy: `${SITE_URL}/disclaimer`,
+    // Diversity and inclusion statement
+    diversityPolicy: `${SITE_URL}/about-us`,
+    // Ethics policy
+    ethicsPolicy: `${SITE_URL}/disclaimer`,
+    // Mission statement
+    missionCoveragePrioritiesPolicy: 'To democratize access to financial information by making it easier for everyone to understand what\'s happening in financial markets.',
   }
 
   const websiteSchema = {

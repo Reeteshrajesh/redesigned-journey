@@ -20,6 +20,50 @@ export async function generateStaticParams() {
   return []
 }
 
+// Category-specific metadata with unique descriptions
+const CATEGORY_METADATA: Record<string, { title: string; description: string; keywords: string }> = {
+  'stock': {
+    title: 'Stock Market News & Analysis',
+    description: 'Real-time stock market news, company updates, earnings reports, and investment insights. Track top performers and market-moving stocks.',
+    keywords: 'stock market news, stock analysis, company earnings, share prices, stock picks, equity news, market performance'
+  },
+  'market': {
+    title: 'Market News & Trends',
+    description: 'Latest market trends, indices updates, sector analysis, and economic indicators. Stay informed about BSE, NSE, and global market movements.',
+    keywords: 'market news, market trends, BSE, NSE, Sensex, Nifty, indices, sector analysis, market outlook'
+  },
+  'ipo': {
+    title: 'IPO News & Updates',
+    description: 'Upcoming IPOs, listings, subscription status, grey market premiums, and IPO reviews. Complete coverage of new public offerings in India.',
+    keywords: 'IPO news, upcoming IPOs, IPO listing, GMP, subscription status, mainboard IPO, SME IPO, public offering'
+  },
+  'crypto': {
+    title: 'Cryptocurrency News & Updates',
+    description: 'Breaking crypto news, Bitcoin prices, altcoin updates, blockchain technology, and cryptocurrency regulations. Your crypto news hub.',
+    keywords: 'cryptocurrency news, Bitcoin, Ethereum, altcoins, crypto prices, blockchain, crypto regulation, DeFi'
+  },
+  'global-news': {
+    title: 'Global Financial News',
+    description: 'International market news, global economic trends, forex updates, and worldwide financial developments affecting investors.',
+    keywords: 'global news, international markets, world economy, forex, global stocks, international finance'
+  },
+  'startup-related': {
+    title: 'Startup News & Funding Updates',
+    description: 'Latest startup funding rounds, unicorn news, venture capital deals, and entrepreneurship insights from India and worldwide.',
+    keywords: 'startup news, funding news, unicorn startups, venture capital, Series A, Series B, startup ecosystem'
+  },
+  'commodity': {
+    title: 'Commodity Market News',
+    description: 'Gold prices, crude oil updates, agricultural commodity news, and precious metals market analysis. Track commodity trends.',
+    keywords: 'commodity news, gold price, silver price, crude oil, MCX, commodity trading, precious metals'
+  },
+  'recent': {
+    title: 'Recent Financial News',
+    description: 'Latest breaking financial news, real-time market updates, and trending stories across stocks, IPOs, crypto, and commodities.',
+    keywords: 'recent news, breaking news, latest updates, real-time news, trending financial news'
+  }
+}
+
 // Generate metadata
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
   const { slug } = await params
@@ -38,19 +82,47 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   const { SITE_URL } = await import('@/lib/config')
   const categoryUrl = `${SITE_URL}/category/${slug}`
 
-  return {
-    title: `${categoryTitle} News | Finscann`,
+  // Get unique metadata for this category, fallback to generic
+  const categoryMeta = CATEGORY_METADATA[slug] || {
+    title: `${categoryTitle} News`,
     description: `Latest ${categoryTitle.toLowerCase()} news, updates, and market insights from Finscann.`,
-    keywords: `${categoryTitle}, financial news, market updates, ${slug}`,
+    keywords: `${categoryTitle}, financial news, market updates, ${slug}`
+  }
+
+  return {
+    title: `${categoryMeta.title} | Finscann`,
+    description: categoryMeta.description,
+    // Remove keywords meta tag (deprecated)
     alternates: {
       canonical: categoryUrl,
     },
     openGraph: {
-      title: `${categoryTitle} News | Finscann`,
-      description: `Latest ${categoryTitle.toLowerCase()} news, updates, and market insights.`,
+      title: `${categoryMeta.title} | Finscann`,
+      description: categoryMeta.description,
       type: 'website',
       url: categoryUrl,
+      siteName: 'Finscann',
+      locale: 'en_US',
+      images: [
+        {
+          url: '/og-image.png',
+          width: 1200,
+          height: 630,
+          alt: `${categoryTitle} News - Finscann`
+        }
+      ]
     },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${categoryMeta.title} | Finscann`,
+      description: categoryMeta.description,
+      images: ['/og-image.png'],
+      creator: '@finscann',
+      site: '@finscann'
+    },
+    other: {
+      'news_keywords': categoryMeta.keywords
+    }
   }
 }
 

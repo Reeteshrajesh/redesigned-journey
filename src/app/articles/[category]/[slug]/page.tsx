@@ -20,7 +20,7 @@ import ReadingProgressBar from '@/components/ReadingProgressBar'
 import AuthorBio from '@/components/AuthorBio'
 import FinancialDisclaimer from '@/components/FinancialDisclaimer'
 
-export const revalidate = 10 // ISR: Revalidate every 10 seconds for real-time news
+export const revalidate = 60 // ISR: Revalidate every 60 seconds (reduced server load)
 export const dynamicParams = true // Allow dynamic rendering for paths not in generateStaticParams
 
 interface ArticlePageProps {
@@ -56,12 +56,29 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
 
   // Clean title and description for social sharing
   const cleanTitle = cleanArticleTitle(article.article_title_optimised)
-  const description = cleanMetadataText(article.synopsis || article.summary, 200)
+
+  // Truncate title to optimal length (50-60 chars, under 580px)
+  const truncateTitle = (title: string, maxLength: number = 55) => {
+    if (title.length > maxLength) {
+      return title.substring(0, maxLength).trim() + '...'
+    }
+    return title
+  }
+
+  const optimizedTitle = truncateTitle(cleanTitle)
+
+  // Optimize description to 155 characters maximum (SEO best practice)
+  const description = cleanMetadataText(article.synopsis || article.summary, 155)
+
+  // Extract relevant tags for article:tag meta
+  const articleTags = article.related_tags
+    ? article.related_tags.split(/[,;|]+/).filter((tag) => tag.trim()).slice(0, 10)
+    : [category, article.news_type, article.company_name].filter(Boolean)
 
   return {
-    title: `${cleanTitle} | Finscann`,
+    title: `${optimizedTitle} | Finscann`,
     description,
-    keywords: `${category}, ${article.news_type}, financial news, stock market, ${cleanTitle}`,
+    // Remove keywords meta tag (deprecated for SEO)
     openGraph: {
       title: cleanTitle,
       description,
@@ -70,6 +87,8 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
       publishedTime: article.created_at,
       modifiedTime: article.updated_at || article.created_at,
       authors: article.source ? [article.source] : undefined,
+      tags: articleTags,
+      section: category,
       images: [
         {
           url: imageUrl,
@@ -79,28 +98,39 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
         },
       ],
       siteName: 'Finscann',
+      locale: 'en_US',
     },
     twitter: {
       card: 'summary_large_image',
-      title: cleanTitle,
+      title: optimizedTitle,
       description,
       images: [imageUrl],
       creator: '@finscann',
       site: '@finscann',
     },
-    // Additional metadata for Google Discover
+    // Additional metadata for Google Discover and News
     alternates: {
       canonical: articleUrl,
-      types: {
-        'application/atom+xml': `${articleUrl}/amp`,
-      },
     },
     other: {
       'article:published_time': article.created_at,
       'article:modified_time': article.updated_at || article.created_at,
-      'article:author': article.source || article.author || 'Finscann Team',
+      'article:author': article.source || article.author || 'Finscann Editorial Team',
       'article:section': category,
-      amphtml: `${articleUrl}/amp`,
+      'article:tag': articleTags.join(', '),
+      'news_keywords': articleTags.slice(0, 5).join(', '),
+      // Publisher metadata
+      'article:publisher': 'https://finscann.com',
+      // Content type signals
+      'og:type': 'article',
+      'twitter:label1': 'Reading time',
+      'twitter:data1': '3 min read',
+      'twitter:label2': 'Published',
+      'twitter:data2': new Date(article.created_at).toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric'
+      }),
     },
   }
 }

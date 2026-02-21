@@ -8,11 +8,14 @@ export const metadata: Metadata = {
   title: 'All Financial News Articles - Latest Market Updates | Finscann',
   description:
     'Browse all financial news articles, market updates, and investment insights. Stay informed with comprehensive coverage of stocks, IPOs, and business news.',
-  keywords: 'financial news, all articles, market updates, stock news, business news, investment insights',
+  alternates: {
+    canonical: 'https://finscann.com/articles',
+  },
   openGraph: {
     title: 'All Articles | Finscann',
     description: 'Browse all financial news articles and market updates',
     type: 'website',
+    url: 'https://finscann.com/articles',
   },
   twitter: {
     card: 'summary_large_image',
