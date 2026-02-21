@@ -73,7 +73,7 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
   // Extract relevant tags for article:tag meta
   const articleTags = article.related_tags
     ? article.related_tags.split(/[,;|]+/).filter((tag) => tag.trim()).slice(0, 10)
-    : [category, article.news_type, article.company_name].filter(Boolean)
+    : [category, article.news_type, article.company_name].filter(Boolean) as string[]
 
   return {
     title: `${optimizedTitle} | Finscann`,
