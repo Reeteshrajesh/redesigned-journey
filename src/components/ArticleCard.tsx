@@ -63,7 +63,7 @@ export default function ArticleCard({ article, priority = false, variant = 'defa
       <Link href={`/articles/${category}/${slug}`} className="group block">
         <article className="bg-gradient-to-br from-white/90 to-gray-50/90 backdrop-blur-md rounded-2xl border border-gray-200/60 overflow-hidden hover:from-gray-50/90 hover:to-gray-100/90 hover:border-blue-500/40 transition-all duration-500 group-hover:scale-[1.02] group-hover:-translate-y-1 shadow-2xl hover:shadow-blue-500/20">
           {imageUrl && (
-            <div className="relative h-48 overflow-hidden bg-gray-100">
+            <div className="relative aspect-video overflow-hidden bg-gray-100">
               <Image
                 src={imageUrl}
                 alt={imageAltText}

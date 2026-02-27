@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import { fetchArticles } from '@/lib/api'
-import ArticleGrid from '@/components/ArticleGrid'
 import { Clock } from 'lucide-react'
+import RecentArticlesClient from '@/components/RecentArticlesClient'
 
 export const metadata: Metadata = {
   title: 'Recent Financial News | Finscann',
@@ -17,8 +17,8 @@ export const metadata: Metadata = {
 export const revalidate = 5 // Revalidate every 5 seconds for real-time breaking news
 
 export default async function RecentPage() {
-  // Fetch the most recent articles
-  const articles = await fetchArticles({ limit: 50 })
+  // Fetch 500 most recent articles as per user requirement
+  const articles = await fetchArticles({ limit: 500 })
 
   return (
     <div className="bg-gray-50 min-h-screen">
@@ -31,7 +31,7 @@ export default async function RecentPage() {
             </div>
             <div>
               <h1 className="text-4xl font-bold text-gray-900">Recent News</h1>
-              <p className="text-gray-600 mt-1">Last 50 articles • Updated every 30 seconds</p>
+              <p className="text-gray-600 mt-1">Latest articles • Updated in real-time</p>
             </div>
           </div>
           <p className="text-xl text-gray-600 max-w-3xl">
@@ -40,26 +40,8 @@ export default async function RecentPage() {
           </p>
         </header>
 
-        {/* Live Indicator */}
-        <div className="mb-6 flex items-center gap-2 text-sm">
-          <span className="relative flex h-3 w-3">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-          </span>
-          <span className="text-gray-600 font-medium">Live Updates</span>
-          <span className="text-gray-400">•</span>
-          <span className="text-gray-500">Showing {articles.length} most recent articles</span>
-        </div>
-
-        {/* Articles Grid */}
-        {articles.length > 0 ? (
-          <ArticleGrid articles={articles} priority />
-        ) : (
-          <div className="text-center py-12 bg-white rounded-lg shadow-sm">
-            <Clock className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-            <p className="text-gray-600">No recent articles found.</p>
-          </div>
-        )}
+        {/* Client-side pagination component */}
+        <RecentArticlesClient initialArticles={articles} />
 
         {/* Categories CTA */}
         <div className="mt-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-8 text-white">

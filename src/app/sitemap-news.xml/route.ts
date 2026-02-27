@@ -6,6 +6,79 @@ import { SITE_URL } from '@/lib/config'
 export const dynamic = 'force-dynamic'
 export const revalidate = 900 // Revalidate every 15 minutes
 
+// Helper function to get valid keywords (no generic fallbacks)
+function getValidKeywords(article: any): string {
+  // If related_tags exists and is not a generic category name, use it
+  if (article.related_tags) {
+    const tags = article.related_tags.trim()
+
+    // Reject generic/category keywords that provide no SEO value
+    const genericKeywords = [
+      'market-related',
+      'stock-related',
+      'general news',
+      'market news',
+      'stock news',
+      'financial news',
+      'crypto news',
+      'ipo news',
+      'global news',
+    ]
+
+    const lowerTags = tags.toLowerCase()
+    const isGeneric = genericKeywords.some(
+      (generic) => lowerTags === generic || lowerTags.includes(generic)
+    )
+
+    if (!isGeneric && tags.length > 3) {
+      // Split by comma, take max 10 keywords, clean up spacing
+      return tags
+        .split(',')
+        .map((k: string) => k.trim())
+        .filter((k: string) => k.length > 0)
+        .slice(0, 10)
+        .join(', ')
+    }
+  }
+
+  // Generate keywords from company name and article title as last resort
+  const fallbackKeywords: string[] = []
+
+  if (article.company_name) {
+    fallbackKeywords.push(article.company_name)
+  }
+
+  if (article.symbol) {
+    fallbackKeywords.push(article.symbol)
+  }
+
+  // Extract meaningful words from title (avoid generic words)
+  if (article.article_title_optimised) {
+    const titleWords = article.article_title_optimised
+      .toLowerCase()
+      .split(/\s+/)
+      .filter(
+        (word: string) =>
+          word.length > 4 && !['about', 'today', 'latest', 'breaking', 'update'].includes(word)
+      )
+      .slice(0, 3)
+
+    fallbackKeywords.push(...titleWords)
+  }
+
+  return fallbackKeywords.slice(0, 10).join(', ') || 'India finance'
+}
+
+// Helper function to escape XML special characters
+function escapeXml(text: string): string {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;')
+}
+
 export async function GET() {
   try {
     // Fetch recent articles (last 48 hours for Google News)
@@ -39,7 +112,7 @@ ${recentArticles
       </news:publication>
       <news:publication_date>${new Date(article.created_at).toISOString()}</news:publication_date>
       <news:title>${escapeXml(article.article_title_optimised)}</news:title>
-      <news:keywords>${escapeXml(article.related_tags || article.news_type || 'financial news')}</news:keywords>
+      <news:keywords>${escapeXml(getValidKeywords(article))}</news:keywords>
     </news:news>
   </url>`
   })
@@ -56,14 +129,4 @@ ${recentArticles
     console.error('Error generating news sitemap:', error)
     return new NextResponse('Error generating sitemap', { status: 500 })
   }
-}
-
-// Helper function to escape XML special characters
-function escapeXml(text: string): string {
-  return text
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&apos;')
 }

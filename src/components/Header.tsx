@@ -186,28 +186,9 @@ export default function Header() {
             onMouseLeave={() => setIsTickerPaused(false)}
           >
             {isLoadingMarket ? (
-              <span className="mx-8">Loading market data...</span>
+              <span className="mx-8 text-gray-500">Loading market data...</span>
             ) : marketError || marketData.length === 0 ? (
-              <>
-                <span className="mx-8">
-                  <strong className="text-blue-600">NIFTY 50</strong> Coming Soon
-                </span>
-                <span className="mx-8">
-                  <strong className="text-blue-600">SENSEX</strong> Coming Soon
-                </span>
-                <span className="mx-8">
-                  <strong className="text-blue-600">BANK NIFTY</strong> Coming Soon
-                </span>
-                <span className="mx-8">
-                  <strong className="text-blue-600">NIFTY IT</strong> Coming Soon
-                </span>
-                <span className="mx-8">
-                  <strong className="text-blue-600">MIDCAP</strong> Coming Soon
-                </span>
-                <span className="mx-8">
-                  <strong className="text-blue-600">SMALLCAP</strong> Coming Soon
-                </span>
-              </>
+              <span className="mx-8 text-gray-500">Market data temporarily unavailable</span>
             ) : (
               <>
                 {/* Duplicate data for seamless loop */}

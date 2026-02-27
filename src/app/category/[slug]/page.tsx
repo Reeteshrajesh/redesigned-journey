@@ -3,9 +3,9 @@ import { notFound } from 'next/navigation'
 import { fetchArticles } from '@/lib/api'
 import { mapCategoryToAPI } from '@/lib/utils'
 import { CATEGORY_MAP } from '@/types'
-import ArticleGrid from '@/components/ArticleGrid'
 import TrendingNow from '@/components/TrendingNow'
 import Breadcrumbs from '@/components/Breadcrumbs'
+import CategoryArticlesClient from '@/components/CategoryArticlesClient'
 
 export const revalidate = 10 // ISR: Revalidate every 10 seconds for real-time news
 
@@ -135,7 +135,8 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   }
 
   const apiCategory = mapCategoryToAPI(slug)
-  const articles = await fetchArticles({ category: apiCategory, limit: 24 })
+  // Fetch 500 articles initially as per user requirement
+  const articles = await fetchArticles({ category: apiCategory, limit: 500 })
 
   const categoryTitle = slug
     .split('-')
@@ -144,9 +145,6 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   // Filter trending articles from this category
   const trendingArticles = articles.filter((article) => article.trending === true).slice(0, 5)
-
-  // Show remaining articles in the grid
-  const gridArticles = articles.slice(0, 18)
 
   return (
     <div className="bg-gray-50 min-h-screen">
@@ -166,14 +164,11 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           </p>
         </header>
 
-        {/* Articles */}
-        {gridArticles.length > 0 ? (
-          <ArticleGrid articles={gridArticles} priority />
-        ) : (
-          <div className="text-center py-12">
-            <p className="text-gray-600">No articles found in this category.</p>
-          </div>
-        )}
+        {/* Client-side pagination component */}
+        <CategoryArticlesClient
+          initialArticles={articles}
+          categoryTitle={categoryTitle}
+        />
       </div>
     </div>
   )

@@ -62,11 +62,12 @@ export default function Footer() {
             <ul className="space-y-3">
               <li><Link href="/" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Latest News</Link></li>
               <li><Link href="/recent" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Recent Updates</Link></li>
+              <li><Link href="/articles" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">All News</Link></li>
               <li><Link href="/category/stock" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Stock News</Link></li>
               <li><Link href="/category/market" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Market Updates</Link></li>
               <li><Link href="/category/ipo" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">IPO News</Link></li>
-              <li><Link href="/search" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Search</Link></li>
-              <li><Link href="/contact" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Contact Us</Link></li>
+              <li><Link href="/category/crypto" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Crypto News</Link></li>
+              <li><Link href="/category/global-news" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Global News</Link></li>
             </ul>
           </div>
 

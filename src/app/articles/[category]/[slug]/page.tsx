@@ -316,13 +316,12 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           {/* Featured Image */}
           {imageUrl && (
             <div className="mb-10">
-              <div className="relative rounded-xl overflow-hidden shadow-2xl bg-gray-100 max-h-[600px]">
+              <div className="relative rounded-xl overflow-hidden shadow-2xl bg-gray-100 aspect-video">
                 <Image
                   src={imageUrl}
                   alt={article.article_title_optimised}
-                  width={1200}
-                  height={675}
-                  className="w-full h-auto max-h-[600px]"
+                  fill
+                  className="object-cover object-center"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
                   priority
                 />

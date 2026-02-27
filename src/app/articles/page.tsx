@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 }
 
 export default async function ArticlesPage() {
-  const articles = await fetchRecentArticles(200)
+  const articles = await fetchRecentArticles(500)
 
   // Sort articles by latest first
   const sortedArticles = articles.sort((a, b) => {

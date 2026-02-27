@@ -1,9 +1,6 @@
 # Finscann - Financial News & Market Analysis
 # https://finscann.com
 
-# Host declaration for SEO
-Host: https://finscann.com
-
 # Google News bot (explicit for news site priority)
 User-agent: Googlebot-News
 Allow: /
@@ -13,7 +10,6 @@ User-agent: *
 Allow: /
 
 # Block technical/private paths to save crawl budget
-Disallow: /_next/static/
 Disallow: /api/
 Disallow: /.well-known/
 
@@ -21,7 +17,3 @@ Disallow: /.well-known/
 Sitemap: https://finscann.com/sitemap.xml
 Sitemap: https://finscann.com/sitemap-news.xml
 Sitemap: https://finscann.com/sitemap-articles.xml
-
-# RSS Feed locations
-Sitemap: https://finscann.com/feed.xml
-Sitemap: https://finscann.com/rss.xml
