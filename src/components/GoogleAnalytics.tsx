@@ -11,23 +11,19 @@ export default function GoogleAnalytics() {
 
   return (
     <>
-      {/* Google Analytics gtag.js */}
+      {/* Google Analytics gtag.js - SEO team requirement: load in head section */}
       <Script
-        strategy="lazyOnload"
+        async
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
       />
       <Script
         id="google-analytics"
-        strategy="lazyOnload"
         dangerouslySetInnerHTML={{
           __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${GA_MEASUREMENT_ID}', {
-              page_path: window.location.pathname,
-              send_page_view: true
-            });
+            gtag('config', '${GA_MEASUREMENT_ID}');
           `,
         }}
       />
