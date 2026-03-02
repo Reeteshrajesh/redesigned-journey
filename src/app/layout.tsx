@@ -24,6 +24,9 @@ export const metadata: Metadata = {
   keywords:
     'financial news, stock market, IPO news, market analysis, investment insights, Finscann, real-time market updates',
   authors: [{ name: 'Finscann' }],
+  verification: {
+    google: 'iv3ZLerBIAt4Mv120VkLR_o_tvyaxNfCbbVpkIHL6bU',
+  },
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon-16x16.png',
