@@ -9,7 +9,7 @@ export const revalidate = 3600 // Revalidate every hour
 export async function GET() {
   try {
     // Fetch all recent articles (up to 1000 for sitemap)
-    const articles = await fetchArticles({ limit: 1000 })
+    const articles = await fetchArticles({ limit: 1000, noCache: true })
 
     // Generate sitemap XML
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
