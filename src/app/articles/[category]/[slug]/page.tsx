@@ -19,6 +19,7 @@ import remarkGfm from 'remark-gfm'
 import ReadingProgressBar from '@/components/ReadingProgressBar'
 import AuthorBio from '@/components/AuthorBio'
 import FinancialDisclaimer from '@/components/FinancialDisclaimer'
+import ArticleViewTracker from '@/components/ArticleViewTracker'
 
 export const revalidate = 60 // ISR: Revalidate every 60 seconds (reduced server load)
 export const dynamicParams = true // Allow dynamic rendering for paths not in generateStaticParams
@@ -188,6 +189,13 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
   return (
     <div className="bg-white min-h-screen">
+      {/* Analytics Tracking */}
+      <ArticleViewTracker
+        articleId={article.id}
+        articleTitle={article.article_title_optimised}
+        category={article.news_type}
+      />
+
       {/* Reading Progress Bar */}
       <ReadingProgressBar />
 

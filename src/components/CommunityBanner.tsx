@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { trackWhatsAppClick, trackTelegramClick } from '@/lib/analytics'
 
 export default function CommunityBanner() {
   const [isVisible, setIsVisible] = useState(true)
@@ -43,6 +44,7 @@ export default function CommunityBanner() {
             href="https://chat.whatsapp.com/E7ilDaGA4yr1wKTYFOQ63q?mode=gi_c"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackWhatsAppClick('banner')}
             className="flex items-center gap-1 sm:gap-2 bg-white text-green-600 px-2 sm:px-4 py-1 sm:py-2 rounded-lg text-xs sm:text-sm font-semibold hover:bg-green-50 transition-all shadow-md hover:shadow-lg"
           >
             <svg className="w-3.5 h-3.5 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -56,6 +58,7 @@ export default function CommunityBanner() {
             href="https://t.me/+UkWVI7tLj743NTI1"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackTelegramClick('banner')}
             className="flex items-center gap-1 sm:gap-2 bg-blue-500 text-white px-2 sm:px-4 py-1 sm:py-2 rounded-lg text-xs sm:text-sm font-semibold hover:bg-blue-600 transition-all shadow-md hover:shadow-lg"
           >
             <svg className="w-3.5 h-3.5 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">

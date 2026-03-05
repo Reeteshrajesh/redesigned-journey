@@ -6,6 +6,7 @@ import { CATEGORY_MAP } from '@/types'
 import TrendingNow from '@/components/TrendingNow'
 import Breadcrumbs from '@/components/Breadcrumbs'
 import CategoryArticlesClient from '@/components/CategoryArticlesClient'
+import CategoryViewTracker from '@/components/CategoryViewTracker'
 
 export const revalidate = 10 // ISR: Revalidate every 10 seconds for real-time news
 
@@ -148,6 +149,9 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   return (
     <div className="bg-gray-50 min-h-screen">
+      {/* Analytics Tracking */}
+      <CategoryViewTracker category={slug} />
+
       {/* Trending Now Section - Shows trending articles from this category */}
       {trendingArticles.length > 0 && <TrendingNow articles={trendingArticles} />}
 

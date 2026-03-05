@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
 import { Clock, TrendingUp, TrendingDown, Minus } from 'lucide-react'
@@ -7,17 +9,26 @@ import { getBestImageUrl } from '@/lib/imageMapping'
 import { generateImageAltText } from '@/lib/imageAltText'
 import { timeAgoWithTooltip } from '@/lib/timeAgo'
 import { cleanArticleTitle, extractCleanExcerpt } from '@/lib/textCleaner'
+import { trackArticleClick } from '@/lib/analytics'
 
 interface ArticleCardProps {
   article: Article
   priority?: boolean
   variant?: 'default' | 'featured'
+  position?: number // Position in list for analytics
 }
 
-export default function ArticleCard({ article, priority = false, variant = 'default' }: ArticleCardProps) {
+export default function ArticleCard({ article, priority = false, variant = 'default', position }: ArticleCardProps) {
   const slug = generateSlug(article.article_title_optimised)
   const category = mapAPIToCategory(article.news_type)
   const isFeatured = variant === 'featured'
+
+  // Track article click
+  const handleClick = () => {
+    if (position !== undefined) {
+      trackArticleClick(article.id, article.article_title_optimised, position)
+    }
+  }
 
   // Get sentiment display (matching old design)
   const getSentimentDisplay = (sentiment: string) => {
@@ -60,7 +71,7 @@ export default function ArticleCard({ article, priority = false, variant = 'defa
   if (isFeatured) {
     // Featured variant (for hero section)
     return (
-      <Link href={`/articles/${category}/${slug}`} className="group block">
+      <Link href={`/articles/${category}/${slug}`} onClick={handleClick} className="group block">
         <article className="bg-gradient-to-br from-white/90 to-gray-50/90 backdrop-blur-md rounded-2xl border border-gray-200/60 overflow-hidden hover:from-gray-50/90 hover:to-gray-100/90 hover:border-blue-500/40 transition-all duration-500 group-hover:scale-[1.02] group-hover:-translate-y-1 shadow-2xl hover:shadow-blue-500/20">
           {imageUrl && (
             <div className="relative aspect-video overflow-hidden bg-gray-100">
