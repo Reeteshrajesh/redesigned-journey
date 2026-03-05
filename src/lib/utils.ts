@@ -8,10 +8,20 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 // Generate URL slug from title
+// IMPORTANT: Must match backend slug generation logic exactly
+// Backend: REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(title, '[^\\w\\s-]', '', 'g'), '\\s+', '-', 'g'), '-+', '-', 'g')
 export function generateSlug(title: string): string {
   return title
     .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
+    .trim()
+    // Step 1: Remove special characters except word chars, spaces, and hyphens
+    // \w = [a-zA-Z0-9_], so this keeps letters, numbers, underscores, spaces, hyphens
+    .replace(/[^\w\s-]/g, '')
+    // Step 2: Replace spaces (and underscores) with hyphens
+    .replace(/[\s_]+/g, '-')
+    // Step 3: Remove multiple consecutive hyphens
+    .replace(/-+/g, '-')
+    // Step 4: Remove leading/trailing hyphens
     .replace(/^-|-$/g, '')
 }
 
