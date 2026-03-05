@@ -1,6 +1,6 @@
 import type { Article, ArticlesResponse } from '@/types'
 import { API_BASE_URL, REVALIDATE_TIME } from './config'
-import { generateSlug, mapCategoryToAPI } from './utils'
+import { mapCategoryToAPI } from './utils'
 
 // Generic fetch wrapper with error handling and Next.js ISR caching
 async function fetchWrapper<T>(url: string): Promise<T> {
@@ -39,29 +39,18 @@ export async function getArticleBySlug(
   slug: string
 ): Promise<Article | null> {
   try {
-    // Map category slug to API format
-    const apiCategory = mapCategoryToAPI(category)
+    // Use the new backend endpoint that supports category + slug lookup
+    // Backend handles both short categories (market) and full names (market-related)
+    // Backend also handles different slug formats (25-454 vs 25454)
+    const url = `${API_BASE_URL}/articles/${category}/${slug}`
 
-    // Fetch all articles in this category
-    const articles = await fetchArticles({ category: apiCategory })
+    const response = await fetchWrapper<{ success: boolean; data: Article }>(url)
 
-    // Find article by matching slug
-    const article = articles.find(
-      (a) => generateSlug(a.article_title_optimised) === slug
-    )
-
-    if (article) {
-      return article
+    if (response.success && response.data) {
+      return response.data
     }
 
-    // If not found in the specified category, search across all articles
-    // This handles cases where articles may have been miscategorized or the URL category is wrong
-    const allArticles = await fetchArticles({ limit: 200 })
-    const fallbackArticle = allArticles.find(
-      (a) => generateSlug(a.article_title_optimised) === slug
-    )
-
-    return fallbackArticle || null
+    return null
   } catch (error) {
     console.error('Error fetching article by slug:', error)
     return null
