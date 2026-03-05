@@ -58,8 +58,6 @@ export const metadata: Metadata = {
     images: ['/og-image.png'],
   },
   robots: {
-    index: true,
-    follow: true,
     googleBot: {
       index: true,
       follow: true,

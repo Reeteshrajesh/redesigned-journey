@@ -1225,8 +1225,6 @@ export const metadata: Metadata = {
   keywords: 'keyword1, keyword2, keyword3',
 
   robots: {
-    index: true,
-    follow: true,
     googleBot: {
       index: true,
       follow: true,
