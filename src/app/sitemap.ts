@@ -3,7 +3,7 @@ import { SITE_URL } from '@/lib/config'
 import { fetchArticles } from '@/lib/api'
 import { mapAPIToCategory, generateSlug } from '@/lib/utils'
 
-export const revalidate = 3600 // Revalidate sitemap every hour
+export const dynamic = 'force-dynamic'; // added this option as the old sitemap was still being returned.
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Static pages
@@ -115,7 +115,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   try {
     // Fetch latest 2000 articles (reduced to prevent API timeouts)
-    const articles = await fetchArticles({ limit: 2000 })
+    const articles = await fetchArticles({ limit: 2000, noCache: true })
 
     articlePages = articles.map((article) => {
       const category = mapAPIToCategory(article.news_type)

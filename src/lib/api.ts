@@ -3,10 +3,12 @@ import { API_BASE_URL, REVALIDATE_TIME } from './config'
 import { mapCategoryToAPI } from './utils'
 
 // Generic fetch wrapper with error handling and Next.js ISR caching
-async function fetchWrapper<T>(url: string): Promise<T> {
-  const response = await fetch(url, {
-    next: { revalidate: REVALIDATE_TIME }, // ISR: Cache for 60 seconds
-  })
+async function fetchWrapper<T>(url: string, cacheOptions?: RequestInit['cache'] | { revalidate: number }): Promise<T> {
+  const nextOptions = cacheOptions === 'no-store'
+    ? { cache: 'no-store' as const }
+    : { next: { revalidate: typeof cacheOptions === 'number' ? cacheOptions : REVALIDATE_TIME } }
+
+  const response = await fetch(url, nextOptions)
 
   if (!response.ok) {
     throw new Error(`API Error: ${response.status} - ${response.statusText}`)
@@ -20,6 +22,7 @@ export async function fetchArticles(params?: {
   limit?: number
   category?: string
   sentiment?: string
+  noCache?: boolean  // 👈 add this
 }): Promise<Article[]> {
   const searchParams = new URLSearchParams()
 
@@ -28,7 +31,10 @@ export async function fetchArticles(params?: {
   if (params?.sentiment) searchParams.append('sentiment', params.sentiment)
 
   const url = `${API_BASE_URL}/articles?${searchParams.toString()}`
-  const response = await fetchWrapper<ArticlesResponse>(url)
+  const response = await fetchWrapper<ArticlesResponse>(
+    url,
+    params?.noCache ? 'no-store' : undefined
+  )
 
   return response.data || []
 }
