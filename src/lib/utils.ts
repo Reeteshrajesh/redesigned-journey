@@ -99,7 +99,9 @@ export function mapAPIToCategory(apiCategory: string): CategorySlug {
     return 'general'
   }
 
-  const normalized = apiCategory.toLowerCase().trim()
+  // Normalize: lowercase, trim, and replace spaces with hyphens
+  // This handles both "Stock Related" (old format) and "stock-related" (new format)
+  const normalized = apiCategory.toLowerCase().trim().replace(/\s+/g, '-')
   return REVERSE_CATEGORY_MAP[normalized] || REVERSE_CATEGORY_MAP[apiCategory] || 'general'
 }
 
