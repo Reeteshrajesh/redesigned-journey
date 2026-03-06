@@ -134,7 +134,9 @@ export function getCategoryColor(category: string): string {
     market: 'bg-purple-100 text-purple-700',
     ipo: 'bg-orange-100 text-orange-700',
     crypto: 'bg-yellow-100 text-yellow-700',
-    commodities: 'bg-green-100 text-green-700',
+    commodity: 'bg-green-100 text-green-700',
+    'global-news': 'bg-indigo-100 text-indigo-700',
+    'startup-related': 'bg-pink-100 text-pink-700',
     general: 'bg-gray-100 text-gray-700',
   }
   return colors[category] || colors.general

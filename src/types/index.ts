@@ -55,34 +55,57 @@ export interface ArticlesResponse {
 }
 
 // Category Mapping
-export type CategorySlug = 'stock' | 'market' | 'ipo' | 'crypto' | 'commodities' | 'general' | 'global-news' | 'startup-related'
+export type CategorySlug = 'stock' | 'market' | 'ipo' | 'crypto' | 'commodity' | 'general' | 'global-news' | 'startup-related'
 
 export const CATEGORY_MAP: Record<CategorySlug, string> = {
   stock: 'stock-related',
   market: 'market-related',
   ipo: 'ipo-related',
   crypto: 'crypto-related',
-  commodities: 'commodities-related',
+  commodity: 'commodity-related',
   general: 'other',
   'global-news': 'global-news',
   'startup-related': 'startup-related',
 }
 
 export const REVERSE_CATEGORY_MAP: Record<string, CategorySlug> = {
+  // Primary category mappings
   'stock-related': 'stock',
   'market-related': 'market',
   'ipo-related': 'ipo',
   'crypto-related': 'crypto',
-  'commodities-related': 'commodities',
-  'commodity-related': 'commodities', // Handle singular form
-  other: 'general',
-  'global-news': 'global-news',
-  'global-stocks': 'stock', // Map global stocks to stock category
+  'commodity-related': 'commodity',
   'startup-related': 'startup-related',
-  'budget-related': 'startup-related', // Map budget to startup for legacy support
-  'dividend-related': 'stock', // Dividends are stock-related
-  'merger-related': 'stock', // Mergers are stock-related
-  'policy-related': 'general', // Policy news goes to general
-  'currency-markets': 'market', // Currency markets to market category
+  'global-news': 'global-news',
+
+  // Stock-related subcategories
+  'global-stocks': 'stock',
+  'dividend-related': 'stock',
+  'merger-related': 'stock',
+  'earnings-related': 'stock',
+  'corporate-action': 'stock',
+  'corporate-governance': 'stock',
+  'quarterly-results': 'stock',
+
+  // Market-related subcategories
+  'currency-markets': 'market',
+  'economic-related': 'market',
+  'mutual-funds': 'market',
+  'market-analysis': 'market',
+
+  // IPO variations
+  'ipo': 'ipo',
+
+  // Global news variations
+  'global-politics': 'global-news',
+
+  // General/other categories
+  'policy-related': 'general',
+  'general-news': 'general',
+  other: 'general',
   '': 'general', // Handle empty news_type
+
+  // Legacy/backward compatibility
+  'commodities-related': 'commodity', // Handle legacy plural form
+  'budget-related': 'startup-related', // Map budget to startup for legacy support
 }
