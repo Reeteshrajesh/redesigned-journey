@@ -1,9 +1,9 @@
 import { MetadataRoute } from 'next'
 import { SITE_URL } from '@/lib/config'
-import { fetchArticles } from '@/lib/api'
-import { mapAPIToCategory, generateSlug } from '@/lib/utils'
 
-export const dynamic = 'force-dynamic'; // added this option as the old sitemap was still being returned.
+// Sitemap 1: Static pages + Category pages only
+// Sitemap 2 (articles/blogs): /sitemap-articles.xml
+export const dynamic = 'force-dynamic'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Static pages
@@ -116,31 +116,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ]
 
-  // Fetch all articles dynamically
-  let articlePages: MetadataRoute.Sitemap = []
-
-  try {
-    // Fetch latest 2000 articles (reduced to prevent API timeouts)
-    const articles = await fetchArticles({ limit: 2000, noCache: true })
-
-    articlePages = articles.map((article) => {
-      const category = mapAPIToCategory(article.news_type)
-      const slug = generateSlug(article.article_title_optimised)
-
-      return {
-        url: `${SITE_URL}/articles/${category}/${slug}`,
-        lastModified: new Date(article.updated_at || article.created_at),
-        changeFrequency: 'daily' as const,
-        priority: 0.8,
-      }
-    })
-
-    console.log(`✅ Sitemap generated with ${articlePages.length} articles`)
-  } catch (error) {
-    console.error('❌ Error fetching articles for sitemap:', error)
-    // Continue with static pages even if article fetch fails
-  }
-
-  return [...staticPages, ...categoryPages, ...articlePages]
+  return [...staticPages, ...categoryPages]
 }
 

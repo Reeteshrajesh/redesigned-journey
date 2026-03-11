@@ -32,11 +32,6 @@
   status = 301
   force = true
 
-# Redirect configuration for Next.js routes
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
 
 # Headers for security, SEO, and performance
 [[headers]]
