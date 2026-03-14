@@ -84,6 +84,42 @@ function parseContentWithCharts(content: string): ContentPart[] {
   return parts
 }
 
+
+const markdownComponents = {
+  a({
+    href,
+    children,
+    node,
+    ...props
+  }: React.AnchorHTMLAttributes<HTMLAnchorElement> & { node?: object }) {
+    const isExternal = href
+      ? new URL(
+          href,
+          `${process.env.NEXT_PUBLIC_SITE_URL || "https://finscann.com"}`,
+        ).hostname !==
+        new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://finscann.com")
+          .hostname
+      : false;
+    if (isExternal) {
+      return (
+        <a
+          href={href}
+          rel="nofollow noopener noreferrer"
+          target="_blank"
+          {...props}
+        >
+          {children}
+        </a>
+      );
+    }
+    return (
+      <a href={href} {...props}>
+        {children}
+      </a>
+    );
+  },
+};
+
 export default function EnhancedMarkdown({ content, className = '' }: EnhancedMarkdownProps) {
   // Parse content into text and chart parts
   const contentParts = useMemo(() => parseContentWithCharts(content), [content])
@@ -103,7 +139,7 @@ export default function EnhancedMarkdown({ content, className = '' }: EnhancedMa
 
         return (
           <div key={`text-${index}`} className="prose prose-lg max-w-none">
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>{part.content}</ReactMarkdown>
+            <ReactMarkdown components={markdownComponents} remarkPlugins={[remarkGfm]}>{part.content}</ReactMarkdown>
           </div>
         )
       })}

@@ -15,5 +15,4 @@ Disallow: /.well-known/
 
 # Sitemap locations
 Sitemap: https://finscann.com/sitemap.xml
-Sitemap: https://finscann.com/sitemap-news.xml
 Sitemap: https://finscann.com/sitemap-articles.xml
