@@ -27,6 +27,9 @@ const withPWA = require('next-pwa')({
 })
 
 const nextConfig = {
+  // Disable streaming metadata so title/meta render inside <head> for all user agents.
+  htmlLimitedBots: /.*/,
+
   // Performance optimizations
   reactStrictMode: true,
 
