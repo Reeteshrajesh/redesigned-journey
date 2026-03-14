@@ -66,7 +66,7 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
     return title
   }
 
-  const optimizedTitle = truncateTitle(cleanTitle)
+  const optimizedTitle = truncateTitle(cleanTitle, cleanTitle.length)
 
   // Optimize description to 155 characters maximum (SEO best practice)
   const description = cleanMetadataText(article.synopsis || article.summary, 155)
