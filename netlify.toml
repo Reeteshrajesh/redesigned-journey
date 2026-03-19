@@ -8,27 +8,27 @@
 [build.environment]
   NODE_VERSION = "20"
   NPM_FLAGS = "--legacy-peer-deps"
-  NEXT_PUBLIC_SITE_URL = "https://finscann.com"
+  NEXT_PUBLIC_SITE_URL = "https://welomoney.com"
   NEXT_PUBLIC_GA_MEASUREMENT_ID = "G-8VSXF40K0E"
   NEXT_PUBLIC_GTM_ID = "GTM-5LNRW9B8"
   NEXT_PUBLIC_GOOGLE_ADSENSE_ID = "ca-pub-4434937912141944"
 
 # Force HTTPS redirect (fix redirect chain issues)
 [[redirects]]
-  from = "http://finscann.com/*"
-  to = "https://finscann.com/:splat"
+  from = "http://welomoney.com/*"
+  to = "https://welomoney.com/:splat"
   status = 301
   force = true
 
 [[redirects]]
-  from = "http://www.finscann.com/*"
-  to = "https://finscann.com/:splat"
+  from = "http://www.welomoney.com/*"
+  to = "https://welomoney.com/:splat"
   status = 301
   force = true
 
 [[redirects]]
-  from = "https://www.finscann.com/*"
-  to = "https://finscann.com/:splat"
+  from = "https://www.welomoney.com/*"
+  to = "https://welomoney.com/:splat"
   status = 301
   force = true
 

@@ -1,6 +1,6 @@
 {
-  "name": "Finscann - Financial News & Market Insights",
-  "short_name": "Finscann",
+  "name": "welomoney - Financial News & Market Insights",
+  "short_name": "welomoney",
   "description": "Real-time financial news, stock market updates, IPO news, and investment insights",
   "start_url": "/",
   "display": "standalone",

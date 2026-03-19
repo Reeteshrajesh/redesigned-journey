@@ -151,7 +151,7 @@ export default function TrendingNow({ articles }: TrendingNowProps) {
                   {/* Meta Info */}
                   <div className="flex items-center justify-between text-sm text-gray-300">
                     <span className="font-semibold text-orange-300">
-                      {topArticle.company_name || 'Finscann'}
+                      {topArticle.company_name || 'welomoney'}
                     </span>
                     <div className="flex items-center gap-1.5">
                       <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

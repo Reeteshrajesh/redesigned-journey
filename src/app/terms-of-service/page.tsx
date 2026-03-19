@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Terms of Service | Finscann',
-  description: 'Terms of Service for Finscann - Read our terms and conditions for using our financial news aggregation platform.',
+  title: 'Terms of Service | welomoney',
+  description: 'Terms of Service for welomoney - Read our terms and conditions for using our financial news aggregation platform.',
 }
 
 export default function TermsOfServicePage() {
@@ -26,7 +26,7 @@ export default function TermsOfServicePage() {
             {/* Introduction */}
             <section>
               <p className="text-gray-700">
-                Welcome to Finscann.com. By accessing or using our website, you agree to be bound by these Terms of Service. Please read them carefully.
+                Welcome to welomoney.com. By accessing or using our website, you agree to be bound by these Terms of Service. Please read them carefully.
               </p>
             </section>
 
@@ -35,7 +35,7 @@ export default function TermsOfServicePage() {
               <div className="bg-red-50 rounded-lg p-6 border border-red-100">
                 <h2 className="text-xl font-bold text-gray-900 mb-2">Critical Disclaimer</h2>
                 <p className="text-gray-900 font-bold mb-2">
-                  Finscann is NOT a financial advisor and does NOT provide investment advice.
+                  welomoney is NOT a financial advisor and does NOT provide investment advice.
                 </p>
                 <p className="text-gray-700 mb-3">
                   <strong>All information on this website is for informational and educational purposes ONLY.</strong>
@@ -68,7 +68,7 @@ export default function TermsOfServicePage() {
             <section>
               <h2 className="text-2xl font-bold text-gray-900 mb-4">1. Acceptance of Terms</h2>
               <p className="text-gray-700 mb-3">
-                By accessing and using Finscann.com ("the Website"), you accept and agree to be bound by these Terms of Service and our Privacy Policy.
+                By accessing and using welomoney.com ("the Website"), you accept and agree to be bound by these Terms of Service and our Privacy Policy.
               </p>
               <p className="text-gray-700 mb-3">
                 <strong>If you do not agree to these terms, you must not use this website.</strong>
@@ -85,7 +85,7 @@ export default function TermsOfServicePage() {
             <section>
               <h2 className="text-2xl font-bold text-gray-900 mb-4">2. Description of Service</h2>
               <p className="text-gray-700 mb-3">
-                Finscann is a <strong>financial news aggregation and summary platform</strong>. We provide:
+                welomoney is a <strong>financial news aggregation and summary platform</strong>. We provide:
               </p>
               <ul className="space-y-1.5 text-gray-700 text-sm">
                 <li className="flex items-start gap-2">
@@ -113,7 +113,7 @@ export default function TermsOfServicePage() {
               <div className="bg-blue-50 rounded-lg p-4 mt-4 border border-blue-100">
                 <h3 className="font-semibold text-gray-900 mb-2">AI-Generated Content</h3>
                 <p className="text-sm text-gray-700">
-                  Some articles on Finscann are generated using AI technology. All AI-generated content is clearly labeled and reviewed by our editorial team. By using this website, you acknowledge that AI-generated content may contain errors or inaccuracies, and you agree not to rely solely on such content for investment decisions.
+                  Some articles on welomoney are generated using AI technology. All AI-generated content is clearly labeled and reviewed by our editorial team. By using this website, you acknowledge that AI-generated content may contain errors or inaccuracies, and you agree not to rely solely on such content for investment decisions.
                 </p>
               </div>
 
@@ -142,7 +142,7 @@ export default function TermsOfServicePage() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-gray-400 mt-0.5">•</span>
-                  <span>You should NOT rely solely on information from Finscann for investment decisions</span>
+                  <span>You should NOT rely solely on information from welomoney for investment decisions</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-gray-400 mt-0.5">•</span>
@@ -262,7 +262,7 @@ export default function TermsOfServicePage() {
             <section>
               <h2 className="text-2xl font-bold text-gray-900 mb-4">7. Limitation of Liability</h2>
               <p className="text-gray-900 font-bold mb-3">
-                TO THE MAXIMUM EXTENT PERMITTED BY LAW, Finscann, its owners, operators, employees, and affiliates SHALL NOT BE LIABLE for:
+                TO THE MAXIMUM EXTENT PERMITTED BY LAW, welomoney, its owners, operators, employees, and affiliates SHALL NOT BE LIABLE for:
               </p>
               <ul className="space-y-1.5 text-gray-700 text-sm">
                 <li className="flex items-start gap-2">
@@ -341,7 +341,7 @@ export default function TermsOfServicePage() {
             <section>
               <h2 className="text-2xl font-bold text-gray-900 mb-4">9. Intellectual Property</h2>
               <p className="text-gray-700 mb-3">
-                All content on Finscann.com, including text, graphics, logos, and software, is the property of Finscann or its content suppliers.
+                All content on welomoney.com, including text, graphics, logos, and software, is the property of welomoney or its content suppliers.
               </p>
               <ul className="space-y-1.5 text-gray-700 text-sm">
                 <li className="flex items-start gap-2">
@@ -366,7 +366,7 @@ export default function TermsOfServicePage() {
             <section>
               <h2 className="text-2xl font-bold text-gray-900 mb-4">10. Indemnification</h2>
               <p className="text-gray-700 mb-3">
-                You agree to indemnify and hold harmless Finscann, its owners, operators, employees, and affiliates from any claims, damages, losses, liabilities, and expenses (including legal fees) arising from:
+                You agree to indemnify and hold harmless welomoney, its owners, operators, employees, and affiliates from any claims, damages, losses, liabilities, and expenses (including legal fees) arising from:
               </p>
               <ul className="space-y-1.5 text-gray-700 text-sm">
                 <li className="flex items-start gap-2">
@@ -446,8 +446,8 @@ export default function TermsOfServicePage() {
               </p>
               <p className="text-gray-700">
                 Email:{' '}
-                <a href="mailto:contact@finscann.com" className="text-blue-600 hover:text-blue-700 font-medium">
-                  contact@finscann.com
+                <a href="mailto:welomoney@gmail.com" className="text-blue-600 hover:text-blue-700 font-medium">
+                  welomoney@gmail.com
                 </a>
               </p>
             </section>
@@ -456,7 +456,7 @@ export default function TermsOfServicePage() {
             <section>
               <div className="bg-gray-100 rounded-lg p-6 border border-gray-300 text-center">
                 <p className="text-sm text-gray-700">
-                  By using Finscann.com, you acknowledge that you have read, understood, and agreed to these Terms of Service and our Disclaimer.
+                  By using welomoney.com, you acknowledge that you have read, understood, and agreed to these Terms of Service and our Disclaimer.
                 </p>
               </div>
             </section>

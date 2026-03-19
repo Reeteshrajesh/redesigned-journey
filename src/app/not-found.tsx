@@ -5,7 +5,7 @@ import ArticleCard from '@/components/ArticleCard'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Page Not Found | Finscann',
+  title: 'Page Not Found | welomoney',
   description: 'The page you are looking for could not be found. Browse our latest financial news and market insights.',
 }
 

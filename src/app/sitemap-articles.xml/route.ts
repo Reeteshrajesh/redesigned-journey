@@ -31,7 +31,7 @@ ${articles
     <priority>0.8</priority>
     <news:news>
       <news:publication>
-        <news:name>Finscann</news:name>
+        <news:name>welomoney</news:name>
         <news:language>en</news:language>
       </news:publication>
       <news:publication_date>${new Date(article.created_at).toISOString()}</news:publication_date>

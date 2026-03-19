@@ -4,18 +4,18 @@ export default function OrganizationSchema() {
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'NewsMediaOrganization',
-    name: 'Finscann',
-    alternateName: 'Finscann News',
+    name: 'welomoney',
+    alternateName: 'welomoney News',
     url: SITE_URL,
     logo: {
       '@type': 'ImageObject',
       url: `${SITE_URL}/finscannlogo.png`,
       width: 512,
       height: 512,
-      caption: 'Finscann - Real-Time Financial News'
+      caption: 'welomoney - Real-Time Financial News'
     },
     description:
-      'Finscann is a trusted source for real-time financial news, stock market updates, IPO alerts, cryptocurrency insights, and investment analysis. We deliver timely, accurate financial information to help you stay ahead in the markets.',
+      'welomoney is a trusted source for real-time financial news, stock market updates, IPO alerts, cryptocurrency insights, and investment analysis. We deliver timely, accurate financial information to help you stay ahead in the markets.',
     foundingDate: '2024',
     slogan: 'Real-Time Financial News & Market Insights',
     keywords: 'financial news, stock market, IPO news, crypto news, market analysis, investment insights',
@@ -29,7 +29,7 @@ export default function OrganizationSchema() {
       {
         '@type': 'ContactPoint',
         contactType: 'Customer Service',
-        email: 'contact@finscann.com',
+        email: 'welomoney@gmail.com',
         availableLanguage: ['English', 'en-US'],
         areaServed: ['IN', 'US', 'GB', 'Worldwide'],
         hoursAvailable: {
@@ -67,13 +67,13 @@ export default function OrganizationSchema() {
   const websiteSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'Finscann',
+    name: 'welomoney',
     url: SITE_URL,
     description:
       'Real-time financial news, stock market updates, IPO alerts & investment insights.',
     publisher: {
       '@type': 'Organization',
-      name: 'Finscann',
+      name: 'welomoney',
       logo: {
         '@type': 'ImageObject',
         url: `${SITE_URL}/finscannlogo.png`,

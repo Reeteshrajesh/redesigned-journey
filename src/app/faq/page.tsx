@@ -3,43 +3,43 @@ import FAQSchema from '@/components/FAQSchema'
 import { ChevronDown } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Frequently Asked Questions | Finscann',
-  description: 'Get answers to common questions about financial news, stock market investing, IPOs, and using Finscann for market insights.',
-  keywords: 'FAQ, financial news questions, stock market help, investing questions, Finscann help',
+  title: 'Frequently Asked Questions | welomoney',
+  description: 'Get answers to common questions about financial news, stock market investing, IPOs, and using welomoney for market insights.',
+  keywords: 'FAQ, financial news questions, stock market help, investing questions, welomoney help',
 }
 
 const faqs = [
   {
-    question: 'What is Finscann?',
-    answer: 'Finscann is a real-time financial news platform that provides stock market updates, IPO alerts, cryptocurrency news, and comprehensive investment insights. We deliver verified financial news from trusted sources to help investors stay informed and make better decisions.',
+    question: 'What is welomoney?',
+    answer: 'welomoney is a real-time financial news platform that provides stock market updates, IPO alerts, cryptocurrency news, and comprehensive investment insights. We deliver verified financial news from trusted sources to help investors stay informed and make better decisions.',
   },
   {
-    question: 'Is Finscann free to use?',
-    answer: 'Yes, Finscann is completely free to use. You can access all our financial news, market analysis, and investment insights without any subscription fees. We believe in democratizing financial information for all investors.',
+    question: 'Is welomoney free to use?',
+    answer: 'Yes, welomoney is completely free to use. You can access all our financial news, market analysis, and investment insights without any subscription fees. We believe in democratizing financial information for all investors.',
   },
   {
     question: 'How often is the news updated?',
-    answer: 'Our news is updated in real-time throughout the trading day. We monitor multiple trusted sources and publish breaking financial news within minutes of occurrence. You can rely on Finscann for the latest market-moving information.',
+    answer: 'Our news is updated in real-time throughout the trading day. We monitor multiple trusted sources and publish breaking financial news within minutes of occurrence. You can rely on welomoney for the latest market-moving information.',
   },
   {
-    question: 'Does Finscann provide investment advice?',
-    answer: 'No, Finscann does not provide personalized investment advice. We are a financial news and information platform. All content is for educational and informational purposes only. Please consult a certified financial advisor before making investment decisions.',
+    question: 'Does welomoney provide investment advice?',
+    answer: 'No, welomoney does not provide personalized investment advice. We are a financial news and information platform. All content is for educational and informational purposes only. Please consult a certified financial advisor before making investment decisions.',
   },
   {
-    question: 'What categories of news does Finscann cover?',
-    answer: 'Finscann covers Stock News, Market Updates, IPO News, Cryptocurrency, Commodities, Global Financial News, Budget & Policy, and General Business News. Each category is updated regularly with the latest developments.',
+    question: 'What categories of news does welomoney cover?',
+    answer: 'welomoney covers Stock News, Market Updates, IPO News, Cryptocurrency, Commodities, Global Financial News, Budget & Policy, and General Business News. Each category is updated regularly with the latest developments.',
   },
   {
-    question: 'How can I stay updated with Finscann news?',
+    question: 'How can I stay updated with welomoney news?',
     answer: 'You can join our WhatsApp group or Telegram channel for instant news alerts. We also publish regular updates on our website and social media channels (Twitter and LinkedIn). Visit our Contact page to join our communities.',
   },
   {
-    question: 'Can I trust the news on Finscann?',
+    question: 'Can I trust the news on welomoney?',
     answer: 'Yes, we source our news from verified and reputable sources. Each article includes proper attribution and we maintain strict editorial standards. However, we recommend cross-referencing important information before making investment decisions.',
   },
   {
-    question: 'Does Finscann use AI to generate content?',
-    answer: 'Yes, some articles on Finscann are generated using AI technology. All AI-generated articles are clearly labeled and reviewed by our editorial team for accuracy. We use AI to provide timely coverage of breaking financial news while maintaining quality through human oversight. You can identify AI-generated content by the author attribution and disclosure notice.',
+    question: 'Does welomoney use AI to generate content?',
+    answer: 'Yes, some articles on welomoney are generated using AI technology. All AI-generated articles are clearly labeled and reviewed by our editorial team for accuracy. We use AI to provide timely coverage of breaking financial news while maintaining quality through human oversight. You can identify AI-generated content by the author attribution and disclosure notice.',
   },
   {
     question: 'What is the difference between Stock News and Market News?',
@@ -50,16 +50,16 @@ const faqs = [
     answer: 'Use our Search feature (available in the top menu or footer) to search by company name, stock symbol, ticker, or keywords. You can also filter results by category and date range for more precise results.',
   },
   {
-    question: 'Does Finscann have a mobile app?',
-    answer: 'Currently, Finscann is optimized as a Progressive Web App (PWA) which works seamlessly on mobile browsers. You can add it to your home screen for an app-like experience. A dedicated mobile app may be launched in the future.',
+    question: 'Does welomoney have a mobile app?',
+    answer: 'Currently, welomoney is optimized as a Progressive Web App (PWA) which works seamlessly on mobile browsers. You can add it to your home screen for an app-like experience. A dedicated mobile app may be launched in the future.',
   },
   {
     question: 'What are IPO alerts and how do I get them?',
     answer: 'IPO (Initial Public Offering) alerts notify you about upcoming and ongoing IPOs, including subscription dates, price bands, and listing information. Join our WhatsApp or Telegram communities to receive instant IPO alerts.',
   },
   {
-    question: 'How can I contact Finscann for queries or feedback?',
-    answer: 'You can reach us via email at contact@finscann.com, join our WhatsApp community, or connect through our Telegram channel. Visit our Contact page for all communication options. We typically respond within 24-48 hours.',
+    question: 'How can I contact welomoney for queries or feedback?',
+    answer: 'You can reach us via email at welomoney@gmail.com, join our WhatsApp community, or connect through our Telegram channel. Visit our Contact page for all communication options. We typically respond within 24-48 hours.',
   },
 ]
 
@@ -73,7 +73,7 @@ export default function FAQPage() {
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h1>
           <p className="text-xl text-gray-600">
-            Everything you need to know about Finscann and financial news
+            Everything you need to know about welomoney and financial news
           </p>
         </div>
 
@@ -113,7 +113,7 @@ export default function FAQPage() {
         <div className="mt-8 p-6 bg-yellow-50 border-l-4 border-yellow-400 rounded-lg">
           <p className="text-sm text-yellow-800">
             <strong>Disclaimer:</strong> The information provided in these FAQs is for general
-            informational purposes only. Finscann does not provide investment, legal, or tax
+            informational purposes only. welomoney does not provide investment, legal, or tax
             advice. Please consult qualified professionals for personalized guidance.
           </p>
         </div>

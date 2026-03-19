@@ -17,13 +17,13 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://finscann.com'),
-  title: 'Finscann - Real-Time Financial News & Market Insights',
+  metadataBase: new URL('https://welomoney.com'),
+  title: 'welomoney - Real-Time Financial News & Market Insights',
   description:
-    'Real-time financial news, stock market updates, IPO alerts & investment insights. Stay ahead with Finscann.',
+    'Real-time financial news, stock market updates, IPO alerts & investment insights. Stay ahead with welomoney.',
   keywords:
-    'financial news, stock market, IPO news, market analysis, investment insights, Finscann, real-time market updates',
-  authors: [{ name: 'Finscann' }],
+    'financial news, stock market, IPO news, market analysis, investment insights, welomoney, real-time market updates',
+  authors: [{ name: 'welomoney' }],
   verification: {
     google: 'iv3ZLerBIAt4Mv120VkLR_o_tvyaxNfCbbVpkIHL6bU',
   },
@@ -36,23 +36,23 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://finscann.com',
-    siteName: 'Finscann',
-    title: 'Finscann - Real-Time Financial News & Market Insights',
+    url: 'https://welomoney.com',
+    siteName: 'welomoney',
+    title: 'welomoney - Real-Time Financial News & Market Insights',
     description:
-      'Real-time financial news, stock market updates, IPO alerts & investment insights. Stay ahead with Finscann.',
+      'Real-time financial news, stock market updates, IPO alerts & investment insights. Stay ahead with welomoney.',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Finscann',
+        alt: 'welomoney',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Finscann - Real-Time Financial News',
+    title: 'welomoney - Real-Time Financial News',
     description:
       'Real-time financial news, stock market updates, IPO alerts & investment insights.',
     images: ['/og-image.png'],
@@ -67,11 +67,11 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://finscann.com',
+    canonical: 'https://welomoney.com',
     types: {
       'application/rss+xml': [
-        { url: '/feed.xml', title: 'Finscann RSS Feed' },
-        { url: '/rss.xml', title: 'Finscann RSS Feed' },
+        { url: '/feed.xml', title: 'welomoney RSS Feed' },
+        { url: '/rss.xml', title: 'welomoney RSS Feed' },
       ],
     },
   },

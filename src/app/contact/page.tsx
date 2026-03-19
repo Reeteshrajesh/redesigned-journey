@@ -2,9 +2,9 @@ import { Metadata } from 'next'
 import { Mail, MessageCircle, Send } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Contact Us - Get in Touch | Finscann',
-  description: 'Contact Finscann for inquiries, feedback, or support. Join our WhatsApp and Telegram communities for real-time market updates.',
-  keywords: 'contact finscann, support, feedback, whatsapp group, telegram channel',
+  title: 'Contact Us - Get in Touch | welomoney',
+  description: 'Contact welomoney for inquiries, feedback, or support. Join our WhatsApp and Telegram communities for real-time market updates.',
+  keywords: 'contact welomoney, support, feedback, whatsapp group, telegram channel',
 }
 
 export default function ContactPage() {
@@ -68,7 +68,7 @@ export default function ContactPage() {
           </a>
 
           {/* Email */}
-          <a href="mailto:contact@finscann.com" className="group">
+          <a href="mailto:welomoney@gmail.com" className="group">
             <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-purple-500 hover:scale-105">
               <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:bg-purple-500 transition-colors">
                 <Mail className="h-8 w-8 text-purple-600 group-hover:text-white" />
@@ -82,7 +82,7 @@ export default function ContactPage() {
                   Send Email →
                 </span>
               </div>
-              <p className="text-sm text-gray-500 text-center mt-3">contact@finscann.com</p>
+              <p className="text-sm text-gray-500 text-center mt-3">welomoney@gmail.com</p>
             </div>
           </a>
         </div>
@@ -112,7 +112,7 @@ export default function ContactPage() {
         {/* Disclaimer */}
         <div className="mt-8 p-6 bg-yellow-50 border-l-4 border-yellow-400 rounded-lg">
           <p className="text-sm text-yellow-800">
-            <strong>Disclaimer:</strong> Finscann provides financial news and information for
+            <strong>Disclaimer:</strong> welomoney provides financial news and information for
             educational purposes only. We do not provide investment advice. Please consult a
             certified financial advisor before making investment decisions.
           </p>

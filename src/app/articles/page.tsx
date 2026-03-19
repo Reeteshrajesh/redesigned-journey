@@ -5,21 +5,21 @@ import CategoryFilter from '@/components/Articles/CategoryFilter'
 export const revalidate = 10 // ISR: Revalidate every 10 seconds for real-time news
 
 export const metadata: Metadata = {
-  title: 'All Financial News Articles - Latest Market Updates | Finscann',
+  title: 'All Financial News Articles - Latest Market Updates | welomoney',
   description:
     'Browse all financial news articles, market updates, and investment insights. Stay informed with comprehensive coverage of stocks, IPOs, and business news.',
   alternates: {
-    canonical: 'https://finscann.com/articles',
+    canonical: 'https://welomoney.com/articles',
   },
   openGraph: {
-    title: 'All Articles | Finscann',
+    title: 'All Articles | welomoney',
     description: 'Browse all financial news articles and market updates',
     type: 'website',
-    url: 'https://finscann.com/articles',
+    url: 'https://welomoney.com/articles',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'All Articles | Finscann',
+    title: 'All Articles | welomoney',
     description: 'Browse all financial news articles and market updates',
   },
 }

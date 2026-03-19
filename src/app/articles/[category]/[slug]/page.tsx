@@ -77,7 +77,7 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
     : [category, article.news_type, article.company_name].filter(Boolean) as string[]
 
   return {
-    title: `${optimizedTitle} | Finscann`,
+    title: `${optimizedTitle} | welomoney`,
     description,
     // Remove keywords meta tag (deprecated for SEO)
     openGraph: {
@@ -98,7 +98,7 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
           height: 630,
         },
       ],
-      siteName: 'Finscann',
+      siteName: 'welomoney',
       locale: 'en_US',
     },
     twitter: {
@@ -116,12 +116,12 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
     other: {
       'article:published_time': article.created_at,
       'article:modified_time': article.updated_at || article.created_at,
-      'article:author': article.source || article.author || 'Finscann Editorial Team',
+      'article:author': article.source || article.author || 'welomoney Editorial Team',
       'article:section': category,
       'article:tag': articleTags.join(', '),
       'news_keywords': articleTags.slice(0, 5).join(', '),
       // Publisher metadata
-      'article:publisher': 'https://finscann.com',
+      'article:publisher': 'https://welomoney.com',
       // Content type signals
       'og:type': 'article',
       'twitter:label1': 'Reading time',
@@ -246,7 +246,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                     </div>
                     <div>
                       <p className="text-sm font-semibold text-gray-900">
-                        {article.author || 'Finscann Team'}
+                        {article.author || 'welomoney Team'}
                       </p>
                       <p className="text-xs text-gray-500">
                         Published at: {new Date(article.created_at).toLocaleDateString('en-US', {
@@ -265,7 +265,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                 <div className="flex items-center gap-3">
                   <SocialShareBar
                     title={article.article_title_optimised}
-                    url={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://finscann.com'}/articles/${category}/${slug}`}
+                    url={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://welomoney.com'}/articles/${category}/${slug}`}
                   />
                 </div>
               </div>
@@ -281,7 +281,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                   <div className="flex-1 min-w-0">
                     <p className="text-xs text-gray-500">Reviewed by</p>
                     <p className="text-sm font-semibold text-gray-900 truncate">
-                      {article.author || 'Finscann Team'}
+                      {article.author || 'welomoney Team'}
                     </p>
                   </div>
                 </div>
@@ -289,7 +289,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                 <div className="flex items-center gap-3 ml-auto">
                   <SocialShareBar
                     title={article.article_title_optimised}
-                    url={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://finscann.com'}/articles/${category}/${slug}`}
+                    url={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://welomoney.com'}/articles/${category}/${slug}`}
                   />
                 </div>
               </div>

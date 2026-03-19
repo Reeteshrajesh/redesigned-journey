@@ -4,11 +4,11 @@ import { Clock } from 'lucide-react'
 import RecentArticlesClient from '@/components/RecentArticlesClient'
 
 export const metadata: Metadata = {
-  title: 'Recent Financial News | Finscann',
-  description: 'Latest financial news, stock market updates, and breaking business stories. Stay updated with real-time market news from Finscann.',
+  title: 'Recent Financial News | welomoney',
+  description: 'Latest financial news, stock market updates, and breaking business stories. Stay updated with real-time market news from welomoney.',
   keywords: 'recent financial news, latest market news, breaking financial news, real-time updates',
   openGraph: {
-    title: 'Recent Financial News | Finscann',
+    title: 'Recent Financial News | welomoney',
     description: 'Latest financial news, stock market updates, and breaking business stories.',
     type: 'website',
   },

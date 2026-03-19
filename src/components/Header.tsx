@@ -19,8 +19,8 @@ export default function Header() {
 
   // Fetch market data with retry logic and localStorage caching
   useEffect(() => {
-    const CACHE_KEY = 'finscann_market_data'
-    const CACHE_TIMESTAMP_KEY = 'finscann_market_timestamp'
+    const CACHE_KEY = 'welomoney_market_data'
+    const CACHE_TIMESTAMP_KEY = 'welomoney_market_timestamp'
     const CACHE_EXPIRY = 30 * 60 * 1000 // 30 minutes
     const FETCH_TIMEOUT = 8000 // 8 seconds
     const MAX_RETRIES = 3
@@ -231,7 +231,7 @@ export default function Header() {
         <Link href="/" className="flex items-center gap-3">
           <Image
             src="/finscannlogo.png"
-            alt="Finscann Logo"
+            alt="welomoney Logo"
             width={160}
             height={54}
             className="h-8 md:h-10 w-auto object-contain"

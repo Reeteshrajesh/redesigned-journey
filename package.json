@@ -1,7 +1,7 @@
 {
-  "name": "finscann-v2",
+  "name": "welomoney-v2",
   "version": "2.0.0",
-  "description": "Finscann - Clean & Lightweight Financial News Platform",
+  "description": "welomoney - Clean & Lightweight Financial News Platform",
   "private": true,
   "scripts": {
     "dev": "next dev",

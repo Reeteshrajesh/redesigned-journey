@@ -7,8 +7,8 @@ interface AuthorBioProps {
 }
 
 export default function AuthorBio({ author, source }: AuthorBioProps) {
-  // Default to Finscann Team if no author specified
-  const authorName = author || source || 'Finscann Editorial Team'
+  // Default to welomoney Team if no author specified
+  const authorName = author || source || 'welomoney Editorial Team'
 
   // Author profiles with E-E-A-T signals
   const authorProfiles: Record<string, {
@@ -21,8 +21,8 @@ export default function AuthorBio({ author, source }: AuthorBioProps) {
     twitter?: string
     isAI?: boolean
   }> = {
-    'Finscann Editorial Team': {
-      name: 'Finscann Editorial Team',
+    'welomoney Editorial Team': {
+      name: 'welomoney Editorial Team',
       bio: 'Our team of financial journalists and market analysts brings you real-time news and expert insights on stocks, IPOs, crypto, and commodities with over 15 years of combined experience in financial markets.',
       credentials: 'Professional financial journalists with degrees in Economics, Business Journalism, and Market Analysis. Published in leading financial publications.',
       expertise: ['Stock Market Analysis', 'IPO Research', 'Crypto & Blockchain', 'Commodities Trading', 'Economic Policy'],
@@ -31,8 +31,8 @@ export default function AuthorBio({ author, source }: AuthorBioProps) {
       twitter: 'https://x.com/finscann',
       isAI: false,
     },
-    'Finscann Team': {
-      name: 'Finscann Editorial Team',
+    'welomoney Team': {
+      name: 'welomoney Editorial Team',
       bio: 'Our team of financial journalists and market analysts brings you real-time news and expert insights on stocks, IPOs, crypto, and commodities with over 15 years of combined experience in financial markets.',
       credentials: 'Professional financial journalists with degrees in Economics, Business Journalism, and Market Analysis. Published in leading financial publications.',
       expertise: ['Stock Market Analysis', 'IPO Research', 'Crypto & Blockchain', 'Commodities Trading', 'Economic Policy'],
@@ -41,8 +41,8 @@ export default function AuthorBio({ author, source }: AuthorBioProps) {
       twitter: 'https://x.com/finscann',
       isAI: false,
     },
-    'Finscann AI': {
-      name: 'Finscann AI',
+    'welomoney AI': {
+      name: 'welomoney AI',
       bio: 'Our AI-powered intelligence system analyzes real-time financial data and market trends to generate timely news articles. All AI-generated content is reviewed by our editorial team for accuracy and quality before publication.',
       credentials: 'Advanced AI system with human editorial oversight by certified financial journalists and market analysts',
       expertise: ['Real-time Data Analysis', 'Pattern Recognition', 'Market Sentiment', 'Automated Reporting'],
@@ -53,7 +53,7 @@ export default function AuthorBio({ author, source }: AuthorBioProps) {
     },
   }
 
-  // Get author profile, fallback to Finscann Team for predefined profiles
+  // Get author profile, fallback to welomoney Team for predefined profiles
   const profile = authorProfiles[authorName] || {
     name: authorName, // Use actual author name
     bio: 'Financial journalist specializing in market analysis, stock research, and investment trends. Dedicated to providing accurate, timely insights for informed decision-making.',
@@ -62,7 +62,7 @@ export default function AuthorBio({ author, source }: AuthorBioProps) {
     image: '/finscannlogo.png',
     linkedin: 'https://www.linkedin.com/company/finscann',
     twitter: 'https://x.com/finscann',
-    isAI: false
+    isAI: false,
   }
 
   return (
@@ -180,20 +180,20 @@ export default function AuthorBio({ author, source }: AuthorBioProps) {
             name: profile.name,
             description: profile.bio,
             ...(profile.isAI ? {
-              alternateName: 'Finscann AI System'
+              alternateName: 'welomoney AI System'
             } : {
               jobTitle: 'Financial Journalist',
               knowsAbout: ['Financial Markets', 'Stock Market Analysis', 'IPO News', 'Cryptocurrency', 'Investment Analysis'],
             }),
             worksFor: {
               '@type': 'NewsMediaOrganization',
-              name: 'Finscann',
-              url: 'https://finscann.com'
+              name: 'welomoney',
+              url: 'https://welomoney.com'
             },
             ...(profile.image && {
               image: {
                 '@type': 'ImageObject',
-                url: `https://finscann.com${profile.image}`
+                url: `https://welomoney.com${profile.image}`
               }
             }),
             sameAs: [
