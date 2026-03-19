@@ -4,8 +4,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Clock, ArrowLeft } from 'lucide-react'
 import { getArticleBySlug, fetchArticles } from '@/lib/api'
-import { formatDate, mapCategoryToAPI, mapAPIToCategory, generateSlug } from '@/lib/utils'
-import { CATEGORY_MAP } from '@/types'
+import { formatDate } from '@/lib/utils'
+import { SITE_URL } from '@/lib/config'
+import { cleanArticleTitle, cleanMetadataText } from '@/lib/textCleaner'
 import RelatedArticles from '@/components/RelatedArticles'
 import ArticleCard from '@/components/ArticleCard'
 import { SocialShareBar } from '@/components/SocialShareBar'
@@ -31,12 +32,6 @@ interface ArticlePageProps {
   }>
 }
 
-// Disable static generation to avoid API rate limiting during build
-// Pages will be generated on-demand with ISR (60s revalidation)
-export async function generateStaticParams() {
-  return []
-}
-
 // Generate metadata
 export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {
   const { category, slug } = await params
@@ -48,25 +43,10 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
     }
   }
 
-  // Get the best image URL for social sharing (import at top)
-  const { getBestImageUrl: getImageUrl } = await import('@/lib/imageMapping')
-  const { SITE_URL } = await import('@/lib/config')
-  const { cleanArticleTitle, cleanMetadataText } = await import('@/lib/textCleaner')
-  const imageUrl = getImageUrl(article)
+  const imageUrl = getBestImageUrl(article)
   const articleUrl = `${SITE_URL}/articles/${category}/${slug}`
-
-  // Clean title and description for social sharing
   const cleanTitle = cleanArticleTitle(article.article_title_optimised)
-
-  // Truncate title to optimal length (50-60 chars, under 580px)
-  const truncateTitle = (title: string, maxLength: number = 55) => {
-    if (title.length > maxLength) {
-      return title.substring(0, maxLength).trim() + '...'
-    }
-    return title
-  }
-
-  const optimizedTitle = truncateTitle(cleanTitle, cleanTitle.length)
+  const optimizedTitle = cleanTitle
 
   // Optimize description to 155 characters maximum (SEO best practice)
   const description = cleanMetadataText(article.synopsis || article.summary, 155)

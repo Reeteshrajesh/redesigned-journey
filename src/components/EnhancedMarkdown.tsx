@@ -95,9 +95,9 @@ const markdownComponents = {
     const isExternal = href
       ? new URL(
           href,
-          `${process.env.NEXT_PUBLIC_SITE_URL || "https://finscann.com"}`,
+          `${process.env.NEXT_PUBLIC_SITE_URL || "https://welomoney.com"}`,
         ).hostname !==
-        new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://finscann.com")
+        new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://welomoney.com")
           .hostname
       : false;
     if (isExternal) {

@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { fetchArticles } from '@/lib/api'
 import { generateSlug, mapAPIToCategory } from '@/lib/utils'
 import { SITE_URL } from '@/lib/config'
+import { escapeXml } from '@/lib/xmlUtils'
 
 export const dynamic = 'force-dynamic'
 export const revalidate = 900 // Revalidate every 15 minutes
@@ -69,12 +70,3 @@ ${articles
   }
 }
 
-// Helper function to escape XML special characters
-function escapeXml(text: string): string {
-  return text
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&apos;')
-}
