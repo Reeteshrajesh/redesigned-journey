@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   description:
     'Real-time financial news, stock market updates, IPO alerts & investment insights. Stay ahead with welomoney.',
   keywords:
-    'financial news, stock market, IPO news, market analysis, investment insights, welomoney, real-time market updates',
+    'financial news, stock market, IPO news, market analysis, investment insights, welomoney, real-time market updates, wealth management',
   authors: [{ name: 'welomoney' }],
   // verification: { google: '' }, // add new welomoney Search Console token when ready
   icons: {
