@@ -11,6 +11,10 @@ async function fetchWrapper<T>(url: string, cacheOptions?: RequestInit['cache'] 
   const response = await fetch(url, nextOptions)
 
   if (!response.ok) {
+    if (response.status === 429) {
+      console.warn('API rate limit hit, returning empty response')
+      return { data: [], success: false } as T
+    }
     throw new Error(`API Error: ${response.status} - ${response.statusText}`)
   }
 

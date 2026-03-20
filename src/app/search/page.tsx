@@ -27,8 +27,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
 
   if (query) {
     searchPerformed = true
-    // Fetch more articles for better search results
-    const allArticles = await fetchArticles({ limit: 300 })
+    const allArticles = await fetchArticles({ limit: 100 })
 
     const lowerQuery = query.toLowerCase()
 

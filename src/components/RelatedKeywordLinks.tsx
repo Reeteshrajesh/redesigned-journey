@@ -7,32 +7,20 @@ interface RelatedKeywordLinksProps {
   allArticles: Article[]
 }
 
+function extractKeywords(article: Article): Set<string> {
+  const keywords: string[] = []
+  if (article.related_tags) {
+    keywords.push(...article.related_tags.split(',').map((tag) => tag.trim().toLowerCase()))
+  }
+  if (article.company_name) keywords.push(article.company_name.toLowerCase())
+  if (article.symbol) keywords.push(article.symbol.toLowerCase())
+  return new Set(keywords.filter((k) => k.length > 2))
+}
+
 export default function RelatedKeywordLinks({
   currentArticle,
   allArticles,
 }: RelatedKeywordLinksProps) {
-  // Extract keywords from tags and title
-  const extractKeywords = (article: Article): string[] => {
-    const keywords: string[] = []
-
-    // From related tags
-    if (article.related_tags) {
-      keywords.push(...article.related_tags.split(',').map((tag) => tag.trim().toLowerCase()))
-    }
-
-    // From company name
-    if (article.company_name) {
-      keywords.push(article.company_name.toLowerCase())
-    }
-
-    // From symbol
-    if (article.symbol) {
-      keywords.push(article.symbol.toLowerCase())
-    }
-
-    return keywords.filter((k) => k.length > 2) // Filter out very short keywords
-  }
-
   const currentKeywords = extractKeywords(currentArticle)
 
   // Find related articles based on keyword overlap
@@ -40,7 +28,10 @@ export default function RelatedKeywordLinks({
     .filter((article) => article.id !== currentArticle.id)
     .map((article) => {
       const articleKeywords = extractKeywords(article)
-      const overlap = currentKeywords.filter((kw) => articleKeywords.includes(kw)).length
+      let overlap = 0
+      for (const kw of currentKeywords) {
+        if (articleKeywords.has(kw)) overlap++
+      }
       return { article, overlap }
     })
     .filter((item) => item.overlap > 0)

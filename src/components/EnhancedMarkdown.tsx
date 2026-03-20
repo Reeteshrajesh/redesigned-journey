@@ -85,6 +85,8 @@ function parseContentWithCharts(content: string): ContentPart[] {
 }
 
 
+const SITE_HOSTNAME = new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://welomoney.com').hostname
+
 const markdownComponents = {
   a({
     href,
@@ -92,33 +94,24 @@ const markdownComponents = {
     node,
     ...props
   }: React.AnchorHTMLAttributes<HTMLAnchorElement> & { node?: object }) {
-    const isExternal = href
-      ? new URL(
-          href,
-          `${process.env.NEXT_PUBLIC_SITE_URL || "https://welomoney.com"}`,
-        ).hostname !==
-        new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://welomoney.com")
-          .hostname
-      : false;
+    let isExternal = false
+    if (href) {
+      try {
+        isExternal = new URL(href, `https://${SITE_HOSTNAME}`).hostname !== SITE_HOSTNAME
+      } catch {
+        isExternal = false
+      }
+    }
     if (isExternal) {
       return (
-        <a
-          href={href}
-          rel="nofollow noopener noreferrer"
-          target="_blank"
-          {...props}
-        >
+        <a href={href} rel="nofollow noopener noreferrer" target="_blank" {...props}>
           {children}
         </a>
-      );
+      )
     }
-    return (
-      <a href={href} {...props}>
-        {children}
-      </a>
-    );
+    return <a href={href} {...props}>{children}</a>
   },
-};
+}
 
 export default function EnhancedMarkdown({ content, className = '' }: EnhancedMarkdownProps) {
   // Parse content into text and chart parts
