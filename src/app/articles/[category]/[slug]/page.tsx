@@ -59,7 +59,11 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
   return {
     title: `${optimizedTitle} | welomoney`,
     description,
-    // Remove keywords meta tag (deprecated for SEO)
+    // noindex until site is stable on new domain — remove when ready to index
+    robots: {
+      index: false,
+      follow: false,
+    },
     openGraph: {
       title: cleanTitle,
       description,
