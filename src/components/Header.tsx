@@ -202,7 +202,7 @@ export default function Header() {
                   const colorClass = isPositive ? 'text-green-600' : isNegative ? 'text-red-600' : 'text-gray-600'
 
                   return (
-                    <span key={`${asset.asset_code}-${index}`} className="mx-8 flex items-center gap-2">
+                    <Link key={`${asset.asset_code}-${index}`} href="/market" className="mx-8 flex items-center gap-2 cursor-pointer hover:opacity-75 transition-opacity">
                       <strong className="text-blue-600">{asset.asset_name}</strong>
                       <span className="text-gray-900 font-semibold">
                         {currentPrice.toLocaleString('en-IN', {
@@ -216,7 +216,7 @@ export default function Header() {
                         {changeValue.toFixed(2)} ({isPositive ? '+' : ''}
                         {changePercent.toFixed(2)}%)
                       </span>
-                    </span>
+                    </Link>
                   )
                 })}
               </>

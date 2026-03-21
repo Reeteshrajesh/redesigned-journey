@@ -1,9 +1,10 @@
-import type { Article, ArticlesResponse } from '@/types'
+import type { Article, ArticlesResponse, MarketData, GainerLoser, GainersLosersResponse } from '@/types'
+export type { MarketData, GainerLoser, GainersLosersResponse }
 import { API_BASE_URL, REVALIDATE_TIME } from './config'
 import { mapCategoryToAPI } from './utils'
 
 // Generic fetch wrapper with error handling and Next.js ISR caching
-async function fetchWrapper<T>(url: string, cacheOptions?: RequestInit['cache'] | { revalidate: number }): Promise<T> {
+async function fetchWrapper<T>(url: string, cacheOptions?: RequestInit['cache'] | { revalidate: number } | number): Promise<T> {
   const nextOptions = cacheOptions === 'no-store'
     ? { cache: 'no-store' as const }
     : { next: { revalidate: typeof cacheOptions === 'number' ? cacheOptions : REVALIDATE_TIME } }
@@ -132,5 +133,42 @@ export async function getRelatedArticles(
   } catch (error) {
     console.error('Error fetching related articles:', error)
     return []
+  }
+}
+
+// Fetch market data (indices + commodities)
+export async function fetchMarketData(): Promise<MarketData> {
+  try {
+    const response = await fetchWrapper<{ success: boolean; data: MarketData }>(
+      `${API_BASE_URL}/market`,
+      60 // revalidate every 60s
+    )
+    return response.data
+  } catch {
+    return { indices: [], commodities: [], lastUpdated: '' }
+  }
+}
+
+// Fetch top gainers
+export async function fetchGainers(limit = 5): Promise<GainersLosersResponse> {
+  try {
+    return await fetchWrapper<GainersLosersResponse>(
+      `${API_BASE_URL}/market/gainers?limit=${limit}`,
+      300
+    )
+  } catch {
+    return { success: false, marketOpen: false, updatedAt: '', data: [] }
+  }
+}
+
+// Fetch top losers
+export async function fetchLosers(limit = 5): Promise<GainersLosersResponse> {
+  try {
+    return await fetchWrapper<GainersLosersResponse>(
+      `${API_BASE_URL}/market/losers?limit=${limit}`,
+      300
+    )
+  } catch {
+    return { success: false, marketOpen: false, updatedAt: '', data: [] }
   }
 }
