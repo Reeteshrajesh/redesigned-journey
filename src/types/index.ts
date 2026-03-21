@@ -117,8 +117,7 @@ export const REVERSE_CATEGORY_MAP: Record<string, CategorySlug> = {
   'startup-related': 'startup-related',
   'global-news': 'global-news',
 
-  // Stock-related subcategories
-  'global-stocks': 'stock',
+  // Stock-related subcategories (intentionally NOT mapped — use API category directly in URL)
   'dividend-related': 'stock',
   'merger-related': 'stock',
   'earnings-related': 'stock',
