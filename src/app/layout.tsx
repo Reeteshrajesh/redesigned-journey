@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   keywords:
     'financial news, stock market, IPO news, market analysis, investment insights, welomoney, real-time market updates, wealth management',
   authors: [{ name: 'welomoney' }],
-  // verification: { google: '' }, // add new welomoney Search Console token when ready
+  verification: { google: 'googlea0d9f92763802ca1' },
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon-16x16.png',
