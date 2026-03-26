@@ -1,9 +1,9 @@
-import { notFound } from 'next/navigation'
+import { notFound, redirect } from 'next/navigation'
 import { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Clock, ArrowLeft } from 'lucide-react'
-import { getArticleBySlug, fetchArticles } from '@/lib/api'
+import { getArticleBySlug, fetchArticles, findArticleBySlug } from '@/lib/api'
 import { formatDate } from '@/lib/utils'
 import { SITE_URL } from '@/lib/config'
 import { cleanArticleTitle, cleanMetadataText } from '@/lib/textCleaner'
@@ -137,6 +137,11 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   const article = await getArticleBySlug(category, slug)
 
   if (!article) {
+    // Fallback: try finding by slug across all categories (handles old /stock/ URLs)
+    const found = await findArticleBySlug(slug)
+    if (found) {
+      redirect(`/articles/${found.category}/${slug}`)
+    }
     notFound()
   }
 

@@ -68,6 +68,33 @@ export async function getArticleBySlug(
   }
 }
 
+// Fallback: find article by slug across all known subcategories
+// Used when old URLs like /articles/stock/:slug don't match the actual news_type
+const SLUG_FALLBACK_CATEGORIES = [
+  'dividend-related', 'merger-related', 'earnings-related',
+  'corporate-action', 'corporate-governance', 'quarterly-results',
+  'global-stocks', 'currency-markets', 'economic-related',
+  'mutual-funds', 'market-analysis', 'global-politics',
+  'policy-related', 'general-news', 'market-related',
+  'stock-related', 'ipo-related', 'crypto-related',
+  'commodity-related', 'startup-related', 'global-news',
+]
+
+export async function findArticleBySlug(slug: string): Promise<{ article: Article; category: string } | null> {
+  for (const cat of SLUG_FALLBACK_CATEGORIES) {
+    try {
+      const url = `${API_BASE_URL}/articles/${cat}/${slug}`
+      const response = await fetchWrapper<{ success: boolean; data: Article }>(url)
+      if (response.success && response.data) {
+        return { article: response.data, category: cat }
+      }
+    } catch {
+      // continue to next category
+    }
+  }
+  return null
+}
+
 // Fetch featured/trending articles
 export async function fetchFeaturedArticles(limit = 5): Promise<Article[]> {
   try {
