@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
 import { Search, Menu, X } from "lucide-react";
 import CommunityBanner from "./CommunityBanner";
+import TickerDateTime from "./TickerDateTime";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -205,66 +206,73 @@ export default function Header() {
 
       {/* Market Ticker */}
       <div className="bg-gray-100 border-b border-gray-200 py-2 overflow-hidden min-h-[44px]">
-        <div className="max-w-7xl mx-auto px-6">
-          <div
-            className="flex animate-marquee whitespace-nowrap text-sm text-gray-700"
-            style={{
-              animationPlayState: isTickerPaused ? "paused" : "running",
-            }}
-            onMouseEnter={() => setIsTickerPaused(true)}
-            onMouseLeave={() => setIsTickerPaused(false)}
-          >
-            {isLoadingMarket ? (
-              <span className="mx-8 text-gray-500">Loading market data...</span>
-            ) : marketError || marketData.length === 0 ? (
-              <span className="mx-8 text-gray-500">
-                Market data temporarily unavailable
-              </span>
-            ) : (
-              <>
-                {/* Duplicate data for seamless loop */}
-                {[...marketData, ...marketData].map((asset, index) => {
-                  const changePercent = parseFloat(asset.change_percent || "0");
-                  const changeValue = parseFloat(asset.change_value || "0");
-                  const currentPrice = parseFloat(asset.current_price || "0");
-                  const isPositive = changePercent >= 0;
-                  const isNegative = changePercent < 0;
+        <div className="px-6 flex items-center gap-4">
+          <div className="flex-1 min-w-0 overflow-hidden">
+            <div
+              className="flex animate-marquee whitespace-nowrap text-sm text-gray-700"
+              style={{
+                animationPlayState: isTickerPaused ? "paused" : "running",
+              }}
+              onMouseEnter={() => setIsTickerPaused(true)}
+              onMouseLeave={() => setIsTickerPaused(false)}
+            >
+              {isLoadingMarket ? (
+                <span className="mx-8 text-gray-500">
+                  Loading market data...
+                </span>
+              ) : marketError || marketData.length === 0 ? (
+                <span className="mx-8 text-gray-500">
+                  Market data temporarily unavailable
+                </span>
+              ) : (
+                <>
+                  {/* Duplicate data for seamless loop */}
+                  {[...marketData, ...marketData].map((asset, index) => {
+                    const changePercent = parseFloat(
+                      asset.change_percent || "0",
+                    );
+                    const changeValue = parseFloat(asset.change_value || "0");
+                    const currentPrice = parseFloat(asset.current_price || "0");
+                    const isPositive = changePercent >= 0;
+                    const isNegative = changePercent < 0;
 
-                  const colorClass = isPositive
-                    ? "text-green-600"
-                    : isNegative
-                      ? "text-red-600"
-                      : "text-gray-600";
+                    const colorClass = isPositive
+                      ? "text-green-600"
+                      : isNegative
+                        ? "text-red-600"
+                        : "text-gray-600";
 
-                  return (
-                    <Link
-                      key={`${asset.asset_code}-${index}`}
-                      href="/market"
-                      className="mx-8 flex items-center gap-2 cursor-pointer hover:opacity-75 transition-opacity"
-                    >
-                      <strong className="text-blue-600">
-                        {asset.asset_name}
-                      </strong>
-                      <span className="text-gray-900 font-semibold">
-                        {currentPrice.toLocaleString("en-IN", {
-                          minimumFractionDigits: 2,
-                          maximumFractionDigits: 2,
-                        })}
-                      </span>
-                      <span
-                        className={`${colorClass} font-medium flex items-center gap-1`}
+                    return (
+                      <Link
+                        key={`${asset.asset_code}-${index}`}
+                        href="/market"
+                        className="mx-8 flex items-center gap-2 cursor-pointer hover:opacity-75 transition-opacity"
                       >
-                        {isPositive ? "▲" : isNegative ? "▼" : "●"}
-                        {isPositive ? "+" : ""}
-                        {changeValue.toFixed(2)} ({isPositive ? "+" : ""}
-                        {changePercent.toFixed(2)}%)
-                      </span>
-                    </Link>
-                  );
-                })}
-              </>
-            )}
+                        <strong className="text-blue-600">
+                          {asset.asset_name}
+                        </strong>
+                        <span className="text-gray-900 font-semibold">
+                          {currentPrice.toLocaleString("en-IN", {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2,
+                          })}
+                        </span>
+                        <span
+                          className={`${colorClass} font-medium flex items-center gap-1`}
+                        >
+                          {isPositive ? "▲" : isNegative ? "▼" : "●"}
+                          {isPositive ? "+" : ""}
+                          {changeValue.toFixed(2)} ({isPositive ? "+" : ""}
+                          {changePercent.toFixed(2)}%)
+                        </span>
+                      </Link>
+                    );
+                  })}
+                </>
+              )}
+            </div>
           </div>
+          <TickerDateTime />
         </div>
       </div>
 
