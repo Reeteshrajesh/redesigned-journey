@@ -4,7 +4,7 @@ import { Article } from '@/types'
 import SearchClient from '@/components/SearchClient'
 
 export const metadata: Metadata = {
-  title: 'Search Articles | Finscann',
+  title: 'Search Articles | welomoney',
   description: 'Search for financial news, stock market updates, and investment insights with advanced filters.',
 }
 
@@ -27,8 +27,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
 
   if (query) {
     searchPerformed = true
-    // Fetch more articles for better search results
-    const allArticles = await fetchArticles({ limit: 300 })
+    const allArticles = await fetchArticles({ limit: 100 })
 
     const lowerQuery = query.toLowerCase()
 

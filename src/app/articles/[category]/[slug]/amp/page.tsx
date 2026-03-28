@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: AMPArticlePageProps): Promise
   const imageUrl = getBestImageUrl(article)
 
   return {
-    title: `${article.article_title_optimised} - AMP | Finscann`,
+    title: `${article.article_title_optimised} - AMP | welomoney`,
     description: article.synopsis || article.summary,
     alternates: {
       canonical: `${SITE_URL}/articles/${category}/${slug}`,
@@ -62,12 +62,12 @@ export default async function AMPArticlePage({ params }: AMPArticlePageProps) {
     dateModified: article.updated_at || article.created_at,
     author: {
       '@type': 'Organization',
-      name: article.source || article.author || 'Finscann Team',
+      name: article.source || article.author || 'welomoney Team',
       url: SITE_URL,
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Finscann',
+      name: 'welomoney',
       url: SITE_URL,
       logo: {
         '@type': 'ImageObject',
@@ -105,7 +105,7 @@ export default async function AMPArticlePage({ params }: AMPArticlePageProps) {
         </a>
         <br />
         <a href={SITE_URL} style={{ fontSize: '24px', fontWeight: 'bold', color: '#2563eb', textDecoration: 'none' }}>
-          Finscann
+          welomoney
         </a>
       </div>
 
@@ -120,7 +120,7 @@ export default async function AMPArticlePage({ params }: AMPArticlePageProps) {
         </h1>
 
         <div style={{ color: '#6b7280', fontSize: '14px', marginBottom: '24px' }}>
-          <span>By {article.source || article.author || 'Finscann Team'}</span>
+          <span>By {article.source || article.author || 'welomoney Team'}</span>
           <span> • </span>
           <time dateTime={article.created_at}>{formatDate(article.created_at)}</time>
         </div>
@@ -153,7 +153,7 @@ export default async function AMPArticlePage({ params }: AMPArticlePageProps) {
         >
           View Full Article with Comments & Interactions
         </a>
-        <p>© {new Date().getFullYear()} Finscann. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} welomoney. All rights reserved.</p>
         <p>
           <a href={`${SITE_URL}/privacy-policy`} style={{ color: '#2563eb', textDecoration: 'none' }}>Privacy Policy</a>
           {' | '}

@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | Finscann',
-  description: 'Privacy Policy for Finscann - Learn how we collect, use, and protect your information',
+  title: 'Privacy Policy | welomoney',
+  description: 'Privacy Policy for welomoney - Learn how we collect, use, and protect your information',
 }
 
 export default function PrivacyPolicyPage() {
@@ -26,7 +26,7 @@ export default function PrivacyPolicyPage() {
             {/* Introduction */}
             <section>
               <p className="text-gray-700">
-                Finscann.com ("we," "us," or "our") respects your privacy. This Privacy Policy explains how we collect, use, disclose, and protect your information when you visit our website.
+                welomoney.com ("we," "us," or "our") respects your privacy. This Privacy Policy explains how we collect, use, disclose, and protect your information when you visit our website.
               </p>
             </section>
 
@@ -65,7 +65,7 @@ export default function PrivacyPolicyPage() {
               <div className="space-y-6">
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-2">Automatically Collected Information:</h3>
-                  <p className="text-gray-700 mb-3">When you visit Finscann, we automatically collect certain information through cookies and similar technologies:</p>
+                  <p className="text-gray-700 mb-3">When you visit welomoney, we automatically collect certain information through cookies and similar technologies:</p>
                   <ul className="space-y-1.5 text-gray-700 text-sm">
                     <li className="flex items-start gap-2">
                       <span className="text-gray-400 mt-0.5">•</span>
@@ -302,8 +302,8 @@ export default function PrivacyPolicyPage() {
               </p>
               <p className="text-gray-700">
                 Email:{' '}
-                <a href="mailto:contact@finscann.com" className="text-blue-600 hover:text-blue-700 font-medium">
-                  contact@finscann.com
+                <a href="mailto:welomoney@gmail.com" className="text-blue-600 hover:text-blue-700 font-medium">
+                  welomoney@gmail.com
                 </a>
               </p>
             </section>

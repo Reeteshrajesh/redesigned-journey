@@ -18,7 +18,7 @@ export default function Footer() {
             <Link href="/" className="inline-block">
               <Image
                 src="/finscannlogo.png"
-                alt="Finscann Logo"
+                alt="welomoney Logo"
                 width={140}
                 height={47}
                 className="h-8 sm:h-9 w-auto object-contain"
@@ -47,7 +47,7 @@ export default function Footer() {
 
             {/* Social Media Icons */}
             <div className="pt-2">
-              <p className="text-xs font-medium text-gray-700 mb-3">Stay Connected with Finscann</p>
+              <p className="text-xs font-medium text-gray-700 mb-3">Stay Connected with welomoney</p>
               <div className="flex gap-2">
                 <a
                   href="https://x.com/finscann"
@@ -104,7 +104,7 @@ export default function Footer() {
           <div className="lg:col-span-4 space-y-6">
             <div className="bg-gradient-to-br from-green-50 to-blue-50 rounded-xl p-5 border border-green-200">
               <h3 className="text-sm font-bold text-gray-900 mb-2">Get Finance News That Matters</h3>
-              <p className="text-xs text-gray-600 mb-4">Join Finscann&apos;s newsletter for real-time market updates and insights.</p>
+              <p className="text-xs text-gray-600 mb-4">Join welomoney&apos;s newsletter for real-time market updates and insights.</p>
               <div className="flex flex-col sm:flex-row gap-2">
                 <a
                   href="https://chat.whatsapp.com/E7ilDaGA4yr1wKTYFOQ63q?mode=gi_c"
@@ -133,7 +133,7 @@ export default function Footer() {
               <p className="text-xs text-gray-600 mb-4">Have a news tip, correction, or partnership query? Reach out to us.</p>
               <div className="flex flex-col sm:flex-row gap-2">
                 <a
-                  href="mailto:contact@finscann.com?subject=News%20Tip%20Submission"
+                  href="mailto:welomoney@gmail.com?subject=News%20Tip%20Submission"
                   onClick={() => trackContactClick('email_tip')}
                   className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-medium transition-colors"
                 >
@@ -141,7 +141,7 @@ export default function Footer() {
                   Submit News Tip
                 </a>
                 <a
-                  href="mailto:contact@finscann.com"
+                  href="mailto:welomoney@gmail.com"
                   onClick={() => trackContactClick('email')}
                   className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-white hover:bg-gray-100 text-gray-700 border border-gray-200 rounded-lg text-xs font-medium transition-colors"
                 >
@@ -158,7 +158,7 @@ export default function Footer() {
       <div className="border-t border-gray-200 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-gray-500">
-            <p>© {currentYear} Finscann. All rights reserved.</p>
+            <p>© {currentYear} welomoney. All rights reserved.</p>
             <p className="flex items-center gap-1">
               <span className="inline-block w-2 h-2 bg-green-500 rounded-full"></span>
               Trusted by thousands of readers

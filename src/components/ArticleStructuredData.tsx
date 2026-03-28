@@ -14,7 +14,7 @@ export default function ArticleStructuredData({ article }: ArticleStructuredData
   const imageUrl = getBestImageUrl(article)
 
   // Determine if author is AI or human
-  const authorName = article.source || article.author || 'Finscann Editorial Team'
+  const authorName = article.source || article.author || 'welomoney Editorial Team'
   const isAIAuthor = authorName.toLowerCase().includes('ai')
 
   // Extract clean description for structured data
@@ -49,7 +49,7 @@ export default function ArticleStructuredData({ article }: ArticleStructuredData
     },
     publisher: {
       '@type': 'NewsMediaOrganization',
-      name: 'Finscann',
+      name: 'welomoney',
       url: SITE_URL,
       logo: {
         '@type': 'ImageObject',
@@ -81,7 +81,7 @@ export default function ArticleStructuredData({ article }: ArticleStructuredData
       },
     }),
     // Add more E-E-A-T signals
-    backstory: 'Finscann provides real-time financial news and market insights.',
+    backstory: 'welomoney provides real-time financial news and market insights.',
     // Editorial review disclosure
     ...(isAIAuthor && {
       creativeWorkStatus: 'AI-Generated with Editorial Review'

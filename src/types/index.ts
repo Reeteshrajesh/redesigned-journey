@@ -54,6 +54,45 @@ export interface ArticlesResponse {
   }
 }
 
+// Market Types
+export interface MarketAsset {
+  asset_code: string
+  asset_name: string
+  asset_type: 'index' | 'commodity'
+  current_price: string
+  previous_close: string
+  change_value: string
+  change_percent: string
+  day_high: string
+  day_low: string
+  updated_at: string
+}
+
+export interface MarketData {
+  indices: MarketAsset[]
+  commodities: MarketAsset[]
+  lastUpdated: string
+}
+
+export interface GainerLoser {
+  symbol: string
+  name: string
+  ltp: number
+  change_percent: number
+  open: number
+  high: number
+  low: number
+  prev_close: number
+  volume: number
+}
+
+export interface GainersLosersResponse {
+  success: boolean
+  marketOpen: boolean
+  updatedAt: string
+  data: GainerLoser[]
+}
+
 // Category Mapping
 export type CategorySlug = 'stock' | 'market' | 'ipo' | 'crypto' | 'commodity' | 'general' | 'global-news' | 'startup-related'
 
@@ -78,8 +117,7 @@ export const REVERSE_CATEGORY_MAP: Record<string, CategorySlug> = {
   'startup-related': 'startup-related',
   'global-news': 'global-news',
 
-  // Stock-related subcategories
-  'global-stocks': 'stock',
+  // Stock-related subcategories (intentionally NOT mapped — use API category directly in URL)
   'dividend-related': 'stock',
   'merger-related': 'stock',
   'earnings-related': 'stock',

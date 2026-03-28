@@ -1,9 +1,9 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'About Us | Finscann',
+  title: 'About Us | welomoney',
   description:
-    'Finscann provides financial news summaries and market insights for informational purposes only. We do not provide investment advice.',
+    'welomoney provides financial news summaries and market insights for informational purposes only. We do not provide investment advice.',
 }
 
 export default function AboutUsPage() {
@@ -12,7 +12,7 @@ export default function AboutUsPage() {
       <div className="max-w-4xl mx-auto px-6 py-16">
         {/* Header Section */}
         <div className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">About Finscann</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">About welomoney</h1>
           <p className="text-xl text-gray-600">
             Your trusted source for real-time financial news and market insights
           </p>
@@ -24,7 +24,7 @@ export default function AboutUsPage() {
             {/* Introduction */}
             <section>
               <p className="text-lg text-gray-700 leading-relaxed">
-                Finscann is a financial news aggregation platform that helps you stay informed about
+                welomoney is a financial news aggregation platform that helps you stay informed about
                 markets, stocks, IPOs, cryptocurrencies, and economic trends.
               </p>
             </section>
@@ -90,7 +90,7 @@ export default function AboutUsPage() {
               <div className="bg-blue-50 rounded-lg p-6 border border-blue-100">
                 <h3 className="font-semibold text-gray-900 mb-3">Transparency Notice</h3>
                 <p className="text-gray-700 mb-4">
-                  Finscann uses advanced AI technology to generate some of our financial news articles. Our AI system analyzes real-time financial data, market trends, and news sources to create timely and relevant content.
+                  welomoney uses advanced AI technology to generate some of our financial news articles. Our AI system analyzes real-time financial data, market trends, and news sources to create timely and relevant content.
                 </p>
                 <div className="space-y-2">
                   <p className="text-sm font-semibold text-gray-900">All AI-generated articles are:</p>
@@ -170,8 +170,8 @@ export default function AboutUsPage() {
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Contact Us</h2>
               <p className="text-gray-700">
                 Email:{' '}
-                <a href="mailto:contact@finscann.com" className="text-blue-600 hover:text-blue-700 font-medium">
-                  contact@finscann.com
+                <a href="mailto:welomoney@gmail.com" className="text-blue-600 hover:text-blue-700 font-medium">
+                  welomoney@gmail.com
                 </a>
               </p>
             </section>

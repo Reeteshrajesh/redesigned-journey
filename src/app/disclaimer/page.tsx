@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Disclaimer | Finscann',
-  description: 'Important disclaimer - Finscann provides information only, not investment advice. Read carefully before using our services.',
+  title: 'Disclaimer | welomoney',
+  description: 'Important disclaimer - welomoney provides information only, not investment advice. Read carefully before using our services.',
 }
 
 export default function DisclaimerPage() {
@@ -25,7 +25,7 @@ export default function DisclaimerPage() {
               <div className="bg-amber-50 rounded-lg p-6 border border-amber-200">
                 <p className="text-amber-900 font-bold text-lg mb-2">Please Read Carefully</p>
                 <p className="text-gray-700">
-                  The information on Finscann.com is for informational and educational purposes ONLY and is NOT financial advice, investment advice, trading advice, or any other sort of professional advice.
+                  The information on welomoney.com is for informational and educational purposes ONLY and is NOT financial advice, investment advice, trading advice, or any other sort of professional advice.
                 </p>
               </div>
             </section>
@@ -65,7 +65,7 @@ export default function DisclaimerPage() {
             <section>
               <h2 className="text-2xl font-bold text-gray-900 mb-4">What We Provide</h2>
               <p className="text-gray-700 mb-3">
-                Finscann is a <strong>news aggregation and summary platform</strong>. We collect publicly available financial news from various sources and present summaries to help you stay informed.
+                welomoney is a <strong>news aggregation and summary platform</strong>. We collect publicly available financial news from various sources and present summaries to help you stay informed.
               </p>
               <p className="text-gray-700">
                 Our <strong>sentiment analysis</strong> is automated using algorithms and may contain errors. It reflects the tone of news articles, not our opinion or recommendation.
@@ -80,7 +80,7 @@ export default function DisclaimerPage() {
               <h2 className="text-2xl font-bold text-gray-900 mb-4">AI-Generated Content</h2>
               <div className="bg-blue-50 rounded-lg p-6 border border-blue-100">
                 <p className="text-gray-700 mb-3">
-                  Some articles on Finscann are generated using artificial intelligence (AI) technology:
+                  Some articles on welomoney are generated using artificial intelligence (AI) technology:
                 </p>
                 <ul className="space-y-1.5 text-sm text-gray-700">
                   <li className="flex items-start gap-2">
@@ -117,7 +117,7 @@ export default function DisclaimerPage() {
             <section>
               <h2 className="text-2xl font-bold text-gray-900 mb-4">No Accuracy Guarantee</h2>
               <p className="text-gray-700 mb-3">
-                <strong>We make no guarantees</strong> about the accuracy, completeness, or timeliness of information on Finscann.
+                <strong>We make no guarantees</strong> about the accuracy, completeness, or timeliness of information on welomoney.
               </p>
               <ul className="space-y-1.5 text-gray-700">
                 <li className="flex items-start gap-2">
@@ -212,7 +212,7 @@ export default function DisclaimerPage() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-gray-400 mt-0.5">•</span>
-                  <span>Never invest based solely on information from Finscann or any single source</span>
+                  <span>Never invest based solely on information from welomoney or any single source</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-gray-400 mt-0.5">•</span>
@@ -228,7 +228,7 @@ export default function DisclaimerPage() {
             <section>
               <h2 className="text-2xl font-bold text-gray-900 mb-4">No Liability</h2>
               <p className="text-gray-700">
-                Finscann, its owners, operators, employees, and affiliates are <strong>NOT LIABLE</strong> for any losses, damages, or consequences arising from your use of this website or any investment decisions you make.
+                welomoney, its owners, operators, employees, and affiliates are <strong>NOT LIABLE</strong> for any losses, damages, or consequences arising from your use of this website or any investment decisions you make.
               </p>
             </section>
 
@@ -240,8 +240,8 @@ export default function DisclaimerPage() {
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Questions or Concerns?</h2>
               <p className="text-gray-700">
                 If you have questions about this disclaimer, contact us at:{' '}
-                <a href="mailto:contact@finscann.com" className="text-blue-600 hover:text-blue-700 font-medium">
-                  contact@finscann.com
+                <a href="mailto:welomoney@gmail.com" className="text-blue-600 hover:text-blue-700 font-medium">
+                  welomoney@gmail.com
                 </a>
               </p>
             </section>
@@ -250,7 +250,7 @@ export default function DisclaimerPage() {
             <section>
               <div className="bg-gray-100 rounded-lg p-6 border border-gray-300 text-center">
                 <p className="text-sm text-gray-700">
-                  By using Finscann.com, you acknowledge that you have read, understood, and agreed to this disclaimer.
+                  By using welomoney.com, you acknowledge that you have read, understood, and agreed to this disclaimer.
                 </p>
               </div>
             </section>

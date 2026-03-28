@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { fetchArticles } from '@/lib/api'
 import { generateSlug, mapAPIToCategory } from '@/lib/utils'
 import { SITE_URL } from '@/lib/config'
+import { escapeXml } from '@/lib/xmlUtils'
 
 export const dynamic = 'force-dynamic'
 export const revalidate = 3600 // Revalidate every hour
@@ -22,7 +23,6 @@ ${articles
     const slug = generateSlug(article.article_title_optimised)
     const url = `${SITE_URL}/articles/${category}/${slug}`
     const lastmod = article.updated_at || article.created_at
-    const publishDate = new Date(article.created_at).toISOString().split('T')[0]
 
     return `  <url>
     <loc>${url}</loc>
@@ -31,7 +31,7 @@ ${articles
     <priority>0.8</priority>
     <news:news>
       <news:publication>
-        <news:name>Finscann</news:name>
+        <news:name>welomoney</news:name>
         <news:language>en</news:language>
       </news:publication>
       <news:publication_date>${new Date(article.created_at).toISOString()}</news:publication_date>
@@ -54,12 +54,3 @@ ${articles
   }
 }
 
-// Helper function to escape XML special characters
-function escapeXml(text: string): string {
-  return text
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&apos;')
-}

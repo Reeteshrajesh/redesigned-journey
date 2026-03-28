@@ -1,11 +1,12 @@
-import { notFound } from 'next/navigation'
+import { notFound, redirect } from 'next/navigation'
 import { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Clock, ArrowLeft } from 'lucide-react'
-import { getArticleBySlug, fetchArticles } from '@/lib/api'
-import { formatDate, mapCategoryToAPI, mapAPIToCategory, generateSlug } from '@/lib/utils'
-import { CATEGORY_MAP } from '@/types'
+import { getArticleBySlug, fetchArticles, findArticleBySlug } from '@/lib/api'
+import { formatDate } from '@/lib/utils'
+import { SITE_URL } from '@/lib/config'
+import { cleanArticleTitle, cleanMetadataText } from '@/lib/textCleaner'
 import RelatedArticles from '@/components/RelatedArticles'
 import ArticleCard from '@/components/ArticleCard'
 import { SocialShareBar } from '@/components/SocialShareBar'
@@ -31,12 +32,6 @@ interface ArticlePageProps {
   }>
 }
 
-// Disable static generation to avoid API rate limiting during build
-// Pages will be generated on-demand with ISR (60s revalidation)
-export async function generateStaticParams() {
-  return []
-}
-
 // Generate metadata
 export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {
   const { category, slug } = await params
@@ -48,25 +43,10 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
     }
   }
 
-  // Get the best image URL for social sharing (import at top)
-  const { getBestImageUrl: getImageUrl } = await import('@/lib/imageMapping')
-  const { SITE_URL } = await import('@/lib/config')
-  const { cleanArticleTitle, cleanMetadataText } = await import('@/lib/textCleaner')
-  const imageUrl = getImageUrl(article)
+  const imageUrl = getBestImageUrl(article)
   const articleUrl = `${SITE_URL}/articles/${category}/${slug}`
-
-  // Clean title and description for social sharing
   const cleanTitle = cleanArticleTitle(article.article_title_optimised)
-
-  // Truncate title to optimal length (50-60 chars, under 580px)
-  const truncateTitle = (title: string, maxLength: number = 55) => {
-    if (title.length > maxLength) {
-      return title.substring(0, maxLength).trim() + '...'
-    }
-    return title
-  }
-
-  const optimizedTitle = truncateTitle(cleanTitle, cleanTitle.length)
+  const optimizedTitle = cleanTitle
 
   // Optimize description to 155 characters maximum (SEO best practice)
   const description = cleanMetadataText(article.synopsis || article.summary, 155)
@@ -77,9 +57,13 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
     : [category, article.news_type, article.company_name].filter(Boolean) as string[]
 
   return {
-    title: `${optimizedTitle} | Finscann`,
+    title: `${optimizedTitle} | welomoney`,
     description,
-    // Remove keywords meta tag (deprecated for SEO)
+    // noindex until site is stable on new domain — remove when ready to index
+    robots: {
+      index: false,
+      follow: false,
+    },
     openGraph: {
       title: cleanTitle,
       description,
@@ -98,7 +82,7 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
           height: 630,
         },
       ],
-      siteName: 'Finscann',
+      siteName: 'welomoney',
       locale: 'en_US',
     },
     twitter: {
@@ -116,12 +100,12 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
     other: {
       'article:published_time': article.created_at,
       'article:modified_time': article.updated_at || article.created_at,
-      'article:author': article.source || article.author || 'Finscann Editorial Team',
+      'article:author': article.source || article.author || 'welomoney Editorial Team',
       'article:section': category,
       'article:tag': articleTags.join(', '),
       'news_keywords': articleTags.slice(0, 5).join(', '),
       // Publisher metadata
-      'article:publisher': 'https://finscann.com',
+      'article:publisher': 'https://welomoney.com',
       // Content type signals
       'og:type': 'article',
       'twitter:label1': 'Reading time',
@@ -153,6 +137,11 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   const article = await getArticleBySlug(category, slug)
 
   if (!article) {
+    // Fallback: try finding by slug across all categories (handles old /stock/ URLs)
+    const found = await findArticleBySlug(slug)
+    if (found) {
+      redirect(`/articles/${found.category}/${slug}`)
+    }
     notFound()
   }
 
@@ -246,7 +235,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                     </div>
                     <div>
                       <p className="text-sm font-semibold text-gray-900">
-                        {article.author || 'Finscann Team'}
+                        {article.author || 'welomoney Team'}
                       </p>
                       <p className="text-xs text-gray-500">
                         Published at: {new Date(article.created_at).toLocaleDateString('en-US', {
@@ -265,7 +254,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                 <div className="flex items-center gap-3">
                   <SocialShareBar
                     title={article.article_title_optimised}
-                    url={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://finscann.com'}/articles/${category}/${slug}`}
+                    url={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://welomoney.com'}/articles/${category}/${slug}`}
                   />
                 </div>
               </div>
@@ -281,7 +270,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                   <div className="flex-1 min-w-0">
                     <p className="text-xs text-gray-500">Reviewed by</p>
                     <p className="text-sm font-semibold text-gray-900 truncate">
-                      {article.author || 'Finscann Team'}
+                      {article.author || 'welomoney Team'}
                     </p>
                   </div>
                 </div>
@@ -289,7 +278,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                 <div className="flex items-center gap-3 ml-auto">
                   <SocialShareBar
                     title={article.article_title_optimised}
-                    url={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://finscann.com'}/articles/${category}/${slug}`}
+                    url={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://welomoney.com'}/articles/${category}/${slug}`}
                   />
                 </div>
               </div>

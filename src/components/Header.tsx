@@ -19,8 +19,8 @@ export default function Header() {
 
   // Fetch market data with retry logic and localStorage caching
   useEffect(() => {
-    const CACHE_KEY = 'finscann_market_data'
-    const CACHE_TIMESTAMP_KEY = 'finscann_market_timestamp'
+    const CACHE_KEY = 'welomoney_market_data'
+    const CACHE_TIMESTAMP_KEY = 'welomoney_market_timestamp'
     const CACHE_EXPIRY = 30 * 60 * 1000 // 30 minutes
     const FETCH_TIMEOUT = 8000 // 8 seconds
     const MAX_RETRIES = 3
@@ -202,7 +202,7 @@ export default function Header() {
                   const colorClass = isPositive ? 'text-green-600' : isNegative ? 'text-red-600' : 'text-gray-600'
 
                   return (
-                    <span key={`${asset.asset_code}-${index}`} className="mx-8 flex items-center gap-2">
+                    <Link key={`${asset.asset_code}-${index}`} href="/market" className="mx-8 flex items-center gap-2 cursor-pointer hover:opacity-75 transition-opacity">
                       <strong className="text-blue-600">{asset.asset_name}</strong>
                       <span className="text-gray-900 font-semibold">
                         {currentPrice.toLocaleString('en-IN', {
@@ -216,7 +216,7 @@ export default function Header() {
                         {changeValue.toFixed(2)} ({isPositive ? '+' : ''}
                         {changePercent.toFixed(2)}%)
                       </span>
-                    </span>
+                    </Link>
                   )
                 })}
               </>
@@ -231,7 +231,7 @@ export default function Header() {
         <Link href="/" className="flex items-center gap-3">
           <Image
             src="/finscannlogo.png"
-            alt="Finscann Logo"
+            alt="welomoney Logo"
             width={160}
             height={54}
             className="h-8 md:h-10 w-auto object-contain"

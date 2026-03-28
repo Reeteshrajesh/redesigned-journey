@@ -86,36 +86,36 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   // Get unique metadata for this category, fallback to generic
   const categoryMeta = CATEGORY_METADATA[slug] || {
     title: `${categoryTitle} News`,
-    description: `Latest ${categoryTitle.toLowerCase()} news, updates, and market insights from Finscann.`,
+    description: `Latest ${categoryTitle.toLowerCase()} news, updates, and market insights from welomoney.`,
     keywords: `${categoryTitle}, financial news, market updates, ${slug}`
   }
 
   return {
-    title: `${categoryMeta.title} | Finscann`,
+    title: `${categoryMeta.title} | welomoney`,
     description: categoryMeta.description,
     // Remove keywords meta tag (deprecated)
     alternates: {
       canonical: categoryUrl,
     },
     openGraph: {
-      title: `${categoryMeta.title} | Finscann`,
+      title: `${categoryMeta.title} | welomoney`,
       description: categoryMeta.description,
       type: 'website',
       url: categoryUrl,
-      siteName: 'Finscann',
+      siteName: 'welomoney',
       locale: 'en_US',
       images: [
         {
           url: '/og-image.png',
           width: 1200,
           height: 630,
-          alt: `${categoryTitle} News - Finscann`
+          alt: `${categoryTitle} News - welomoney`
         }
       ]
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${categoryMeta.title} | Finscann`,
+      title: `${categoryMeta.title} | welomoney`,
       description: categoryMeta.description,
       images: ['/og-image.png'],
       creator: '@finscann',

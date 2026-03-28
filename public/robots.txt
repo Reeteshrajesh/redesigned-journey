@@ -1,5 +1,5 @@
-# Finscann - Financial News & Market Analysis
-# https://finscann.com
+# welomoney - Financial News & Market Analysis
+# https://welomoney.com
 
 # Google News bot (explicit for news site priority)
 User-agent: Googlebot-News
@@ -14,5 +14,5 @@ Disallow: /api/
 Disallow: /.well-known/
 
 # Sitemap locations
-Sitemap: https://finscann.com/sitemap.xml
-Sitemap: https://finscann.com/sitemap-articles.xml
+Sitemap: https://welomoney.com/sitemap.xml
+Sitemap: https://welomoney.com/sitemap-articles.xml

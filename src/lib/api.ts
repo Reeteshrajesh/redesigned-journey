@@ -1,9 +1,10 @@
-import type { Article, ArticlesResponse } from '@/types'
+import type { Article, ArticlesResponse, MarketData, GainerLoser, GainersLosersResponse } from '@/types'
+export type { MarketData, GainerLoser, GainersLosersResponse }
 import { API_BASE_URL, REVALIDATE_TIME } from './config'
 import { mapCategoryToAPI } from './utils'
 
 // Generic fetch wrapper with error handling and Next.js ISR caching
-async function fetchWrapper<T>(url: string, cacheOptions?: RequestInit['cache'] | { revalidate: number }): Promise<T> {
+async function fetchWrapper<T>(url: string, cacheOptions?: RequestInit['cache'] | { revalidate: number } | number): Promise<T> {
   const nextOptions = cacheOptions === 'no-store'
     ? { cache: 'no-store' as const }
     : { next: { revalidate: typeof cacheOptions === 'number' ? cacheOptions : REVALIDATE_TIME } }
@@ -11,6 +12,10 @@ async function fetchWrapper<T>(url: string, cacheOptions?: RequestInit['cache'] 
   const response = await fetch(url, nextOptions)
 
   if (!response.ok) {
+    if (response.status === 429) {
+      console.warn('API rate limit hit, returning empty response')
+      return { data: [], success: false } as T
+    }
     throw new Error(`API Error: ${response.status} - ${response.statusText}`)
   }
 
@@ -61,6 +66,33 @@ export async function getArticleBySlug(
     console.error('Error fetching article by slug:', error)
     return null
   }
+}
+
+// Fallback: find article by slug across all known subcategories
+// Used when old URLs like /articles/stock/:slug don't match the actual news_type
+const SLUG_FALLBACK_CATEGORIES = [
+  'dividend-related', 'merger-related', 'earnings-related',
+  'corporate-action', 'corporate-governance', 'quarterly-results',
+  'global-stocks', 'currency-markets', 'economic-related',
+  'mutual-funds', 'market-analysis', 'global-politics',
+  'policy-related', 'general-news', 'market-related',
+  'stock-related', 'ipo-related', 'crypto-related',
+  'commodity-related', 'startup-related', 'global-news',
+]
+
+export async function findArticleBySlug(slug: string): Promise<{ article: Article; category: string } | null> {
+  for (const cat of SLUG_FALLBACK_CATEGORIES) {
+    try {
+      const url = `${API_BASE_URL}/articles/${cat}/${slug}`
+      const response = await fetchWrapper<{ success: boolean; data: Article }>(url)
+      if (response.success && response.data) {
+        return { article: response.data, category: cat }
+      }
+    } catch {
+      // continue to next category
+    }
+  }
+  return null
 }
 
 // Fetch featured/trending articles
@@ -128,5 +160,42 @@ export async function getRelatedArticles(
   } catch (error) {
     console.error('Error fetching related articles:', error)
     return []
+  }
+}
+
+// Fetch market data (indices + commodities)
+export async function fetchMarketData(): Promise<MarketData> {
+  try {
+    const response = await fetchWrapper<{ success: boolean; data: MarketData }>(
+      `${API_BASE_URL}/market`,
+      60 // revalidate every 60s
+    )
+    return response.data
+  } catch {
+    return { indices: [], commodities: [], lastUpdated: '' }
+  }
+}
+
+// Fetch top gainers
+export async function fetchGainers(limit = 5): Promise<GainersLosersResponse> {
+  try {
+    return await fetchWrapper<GainersLosersResponse>(
+      `${API_BASE_URL}/market/gainers?limit=${limit}`,
+      300
+    )
+  } catch {
+    return { success: false, marketOpen: false, updatedAt: '', data: [] }
+  }
+}
+
+// Fetch top losers
+export async function fetchLosers(limit = 5): Promise<GainersLosersResponse> {
+  try {
+    return await fetchWrapper<GainersLosersResponse>(
+      `${API_BASE_URL}/market/losers?limit=${limit}`,
+      300
+    )
+  } catch {
+    return { success: false, marketOpen: false, updatedAt: '', data: [] }
   }
 }

@@ -2,8 +2,8 @@ import { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Finscann - Real-Time Financial News',
-    short_name: 'Finscann',
+    name: 'welomoney - Real-Time Financial News',
+    short_name: 'welomoney',
     description: 'Real-time financial news, stock market updates, IPO alerts & investment insights.',
     start_url: '/',
     display: 'standalone',

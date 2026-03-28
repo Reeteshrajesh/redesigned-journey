@@ -93,16 +93,22 @@ export function mapCategoryToAPI(urlCategory: string): string {
 }
 
 // Map API category to URL category
-export function mapAPIToCategory(apiCategory: string): CategorySlug {
+export function mapAPIToCategory(apiCategory: string): string {
   // Handle empty or missing category
   if (!apiCategory || apiCategory.trim() === '') {
     return 'general'
   }
 
   // Normalize: lowercase, trim, and replace spaces with hyphens
-  // This handles both "Stock Related" (old format) and "stock-related" (new format)
   const normalized = apiCategory.toLowerCase().trim().replace(/\s+/g, '-')
-  return REVERSE_CATEGORY_MAP[normalized] || REVERSE_CATEGORY_MAP[apiCategory] || 'general'
+
+  // If it maps to a known slug, use that
+  const mapped = REVERSE_CATEGORY_MAP[normalized] || REVERSE_CATEGORY_MAP[apiCategory]
+  if (mapped) return mapped
+
+  // Otherwise use the normalized API category directly as URL segment
+  // This handles subcategories like global-stocks, dividend-related etc.
+  return normalized
 }
 
 // Get sentiment color class

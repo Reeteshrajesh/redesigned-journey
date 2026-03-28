@@ -7,8 +7,8 @@ export const UPLOADS_URL =
   'https://finscann-images.s3.ap-south-1.amazonaws.com'
 
 // Site Configuration
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://finscann.com'
-export const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME || 'Finscann'
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://welomoney.com'
+export const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME || 'WeloMoney'
 
 // Analytics
 export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''

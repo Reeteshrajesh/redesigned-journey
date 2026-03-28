@@ -18,55 +18,35 @@ interface ArticleCardProps {
   position?: number // Position in list for analytics
 }
 
+function getSentimentDisplay(sentiment: string) {
+  switch (sentiment?.toLowerCase()) {
+    case 'positive':
+      return { icon: <TrendingUp className="h-3.5 w-3.5" />, color: 'text-green-600', bg: 'bg-green-50' }
+    case 'negative':
+      return { icon: <TrendingDown className="h-3.5 w-3.5" />, color: 'text-red-600', bg: 'bg-red-50' }
+    default:
+      return { icon: <Minus className="h-3.5 w-3.5" />, color: 'text-gray-600', bg: 'bg-gray-50' }
+  }
+}
+
+function formatCategoryName(category: string): string {
+  return category.split('-').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+}
+
 export default function ArticleCard({ article, priority = false, variant = 'default', position }: ArticleCardProps) {
   const slug = generateSlug(article.article_title_optimised)
   const category = mapAPIToCategory(article.news_type)
   const isFeatured = variant === 'featured'
+  const sentimentDisplay = getSentimentDisplay(article.sentiment)
+  const imageUrl = getBestImageUrl(article)
+  const imageAltText = generateImageAltText(article)
+  const categoryName = formatCategoryName(category)
 
-  // Track article click
   const handleClick = () => {
     if (position !== undefined) {
       trackArticleClick(article.id, article.article_title_optimised, position)
     }
   }
-
-  // Get sentiment display (matching old design)
-  const getSentimentDisplay = (sentiment: string) => {
-    switch (sentiment?.toLowerCase()) {
-      case 'positive':
-        return {
-          icon: <TrendingUp className="h-3.5 w-3.5" />,
-          color: 'text-green-600',
-          bg: 'bg-green-50',
-        }
-      case 'negative':
-        return {
-          icon: <TrendingDown className="h-3.5 w-3.5" />,
-          color: 'text-red-600',
-          bg: 'bg-red-50',
-        }
-      default:
-        return {
-          icon: <Minus className="h-3.5 w-3.5" />,
-          color: 'text-gray-600',
-          bg: 'bg-gray-50',
-        }
-    }
-  }
-
-  const sentimentDisplay = getSentimentDisplay(article.sentiment)
-
-  // Get the best image URL with tag-based fallback
-  const imageUrl = getBestImageUrl(article)
-
-  // Generate SEO-friendly alt text
-  const imageAltText = generateImageAltText(article)
-
-  // Format category name
-  const categoryName = category
-    .split('-')
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ')
 
   if (isFeatured) {
     // Featured variant (for hero section)

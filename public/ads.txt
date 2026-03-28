@@ -1,4 +1,4 @@
-# ads.txt file for Finscann.com
+# ads.txt file for welomoney.com
 # This file is used by ad networks to verify authorized sellers
 # Update this file with your actual Publisher ID from Google AdSense
 

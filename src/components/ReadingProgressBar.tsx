@@ -6,29 +6,32 @@ export default function ReadingProgressBar() {
   const [progress, setProgress] = useState(0)
 
   useEffect(() => {
+    let ticking = false
+
     const updateProgress = () => {
       const windowHeight = window.innerHeight
       const documentHeight = document.documentElement.scrollHeight
       const scrollTop = window.scrollY || document.documentElement.scrollTop
-
       const totalScroll = documentHeight - windowHeight
       const currentProgress = totalScroll > 0 ? (scrollTop / totalScroll) * 100 : 0
-
       setProgress(Math.min(100, Math.max(0, currentProgress)))
+      ticking = false
     }
 
-    // Update on scroll
-    window.addEventListener('scroll', updateProgress, { passive: true })
+    const onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(updateProgress)
+        ticking = true
+      }
+    }
 
-    // Update on resize
-    window.addEventListener('resize', updateProgress, { passive: true })
-
-    // Initial calculation
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll, { passive: true })
     updateProgress()
 
     return () => {
-      window.removeEventListener('scroll', updateProgress)
-      window.removeEventListener('resize', updateProgress)
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
     }
   }, [])
 
