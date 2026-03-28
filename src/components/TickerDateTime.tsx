@@ -35,7 +35,7 @@ export default function TickerDateTime() {
   const { day, fullDate, time } = formatDateTime(now);
 
   return (
-    <div className="shrink-0 rounded-lg border border-gray-300 bg-white/90 px-3 py-1.5 text-right shadow-sm backdrop-blur-sm">
+    <div className="shrink-0 rounded-lg border border-gray-500 bg-white/90 px-3 py-1.5 text-right shadow-sm backdrop-blur-sm">
       <p className="text-[10px] font-semibold uppercase tracking-wide text-gray-500">
         {day}, {fullDate}
       </p>
