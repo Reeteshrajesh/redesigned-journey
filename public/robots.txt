@@ -15,4 +15,3 @@ Disallow: /.well-known/
 
 # Sitemap locations
 Sitemap: https://welomoney.com/sitemap.xml
-Sitemap: https://welomoney.com/sitemap-articles.xml
