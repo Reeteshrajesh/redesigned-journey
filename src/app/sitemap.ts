@@ -1,5 +1,7 @@
 import { MetadataRoute } from 'next'
 import { SITE_URL } from '@/lib/config'
+import { fetchArticles } from '@/lib/api'
+import { generateSlug, mapAPIToCategory } from '@/lib/utils'
 
 // Sitemap 1: Static pages + Category pages only
 // Sitemap 2 (articles/blogs): /sitemap-articles.xml
@@ -146,6 +148,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ]
 
-  return [...staticPages, ...categoryPages]
+  let articlePages: MetadataRoute.Sitemap = []
+
+  try {
+    const articles = await fetchArticles({ limit: 1000, noCache: true })
+
+    articlePages = articles.map((article) => {
+      const category = mapAPIToCategory(article.news_type)
+      const slug = generateSlug(article.article_title_optimised)
+
+      return {
+        url: `${SITE_URL}/articles/${category}/${slug}`,
+        lastModified: new Date(article.updated_at || article.created_at),
+        changeFrequency: 'monthly',
+        priority: 0.8,
+      }
+    })
+  } catch (error) {
+    console.error('Error fetching articles for sitemap:', error)
+  }
+
+  return [...staticPages, ...categoryPages, ...articlePages]
 }
 
