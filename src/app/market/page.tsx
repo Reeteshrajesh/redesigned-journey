@@ -5,6 +5,9 @@ import MarketClient from '@/components/MarketClient'
 export const metadata: Metadata = {
   title: 'Market Overview | welomoney',
   description: 'Live indices, commodities, top gainers & losers, and market news.',
+  alternates: {
+    canonical: 'https://welomoney.com/market',
+  },
   robots: { index: false, follow: true },
 }
 

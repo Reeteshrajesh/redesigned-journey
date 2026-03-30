@@ -35,7 +35,16 @@ interface ArticlePageProps {
 // Generate metadata
 export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {
   const { category, slug } = await params
-  const article = await getArticleBySlug(category, slug)
+  let article = await getArticleBySlug(category, slug)
+
+  // If not found under this category, try the fallback (same logic as page component)
+  if (!article) {
+    const { findArticleBySlug } = await import('@/lib/api')
+    const found = await findArticleBySlug(slug)
+    if (found) {
+      article = found.article
+    }
+  }
 
   if (!article) {
     return {
@@ -189,7 +198,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       <ReadingProgressBar />
 
       {/* Structured Data for SEO */}
-      <ArticleStructuredData article={article} />
+      <ArticleStructuredData article={article} urlCategory={category} />
 
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8">

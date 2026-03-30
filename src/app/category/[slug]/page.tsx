@@ -62,6 +62,26 @@ const CATEGORY_METADATA: Record<string, { title: string; description: string; ke
     title: 'Recent Financial News',
     description: 'Latest breaking financial news, real-time market updates, and trending stories across stocks, IPOs, crypto, and commodities.',
     keywords: 'recent news, breaking news, latest updates, real-time news, trending financial news'
+  },
+  'global-stocks': {
+    title: 'Global Stocks News & Analysis',
+    description: 'Latest global stock market news, international equities, US markets, and worldwide stock updates. Track global market movements.',
+    keywords: 'global stocks, international stocks, US stocks, NYSE, NASDAQ, global equities, world markets, stock market news'
+  },
+  'dividend-related': {
+    title: 'Dividend News & Updates',
+    description: 'Latest dividend announcements, record dates, ex-dividend dates, and dividend yield analysis. Stay updated on dividend-paying stocks.',
+    keywords: 'dividend news, dividend announcement, record date, ex-dividend, dividend yield, dividend stocks, interim dividend'
+  },
+  'currency-markets': {
+    title: 'Currency Markets News',
+    description: 'Latest forex news, currency exchange rates, USD/INR updates, and currency market analysis. Track rupee and global currency movements.',
+    keywords: 'currency markets, forex news, USD INR, rupee, exchange rates, forex trading, currency pairs, RBI policy'
+  },
+  'policy-related': {
+    title: 'Policy & Regulatory News',
+    description: 'Latest government policy announcements, RBI decisions, SEBI regulations, budget updates, and economic policy news affecting markets.',
+    keywords: 'policy news, RBI policy, SEBI regulations, government policy, budget news, economic policy, regulatory updates'
   }
 }
 

@@ -3,6 +3,9 @@ import { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Disclaimer | welomoney',
   description: 'Important disclaimer - welomoney provides information only, not investment advice. Read carefully before using our services.',
+  alternates: {
+    canonical: 'https://welomoney.com/disclaimer',
+  },
 }
 
 export default function DisclaimerPage() {

@@ -5,7 +5,9 @@ import { ChevronDown } from 'lucide-react'
 export const metadata: Metadata = {
   title: 'Frequently Asked Questions | welomoney',
   description: 'Get answers to common questions about financial news, stock market investing, IPOs, and using welomoney for market insights.',
-  keywords: 'FAQ, financial news questions, stock market help, investing questions, welomoney help',
+  alternates: {
+    canonical: 'https://welomoney.com/faq',
+  },
 }
 
 const faqs = [

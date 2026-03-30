@@ -94,7 +94,7 @@ export interface GainersLosersResponse {
 }
 
 // Category Mapping
-export type CategorySlug = 'stock' | 'market' | 'ipo' | 'crypto' | 'commodity' | 'general' | 'global-news' | 'startup-related'
+export type CategorySlug = 'stock' | 'market' | 'ipo' | 'crypto' | 'commodity' | 'general' | 'global-news' | 'startup-related' | 'global-stocks' | 'dividend-related' | 'currency-markets' | 'policy-related'
 
 export const CATEGORY_MAP: Record<CategorySlug, string> = {
   stock: 'stock-related',
@@ -105,6 +105,10 @@ export const CATEGORY_MAP: Record<CategorySlug, string> = {
   general: 'other',
   'global-news': 'global-news',
   'startup-related': 'startup-related',
+  'global-stocks': 'global-stocks',
+  'dividend-related': 'dividend-related',
+  'currency-markets': 'currency-markets',
+  'policy-related': 'policy-related',
 }
 
 export const REVERSE_CATEGORY_MAP: Record<string, CategorySlug> = {

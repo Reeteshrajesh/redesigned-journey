@@ -1,15 +1,18 @@
 import { Article } from '@/types'
 import { SITE_URL } from '@/lib/config'
 import { getBestImageUrl } from '@/lib/imageMapping'
-import { generateSlug, mapAPIToCategory } from '@/lib/utils'
+import { generateSlug } from '@/lib/utils'
 
 interface ArticleStructuredDataProps {
   article: Article
+  // Pass the actual URL category from the page (not derived from news_type)
+  urlCategory?: string
 }
 
-export default function ArticleStructuredData({ article }: ArticleStructuredDataProps) {
-  const category = mapAPIToCategory(article.news_type)
+export default function ArticleStructuredData({ article, urlCategory }: ArticleStructuredDataProps) {
   const slug = generateSlug(article.article_title_optimised)
+  // Use the URL category if provided; fall back to news_type directly so canonical matches the actual page URL
+  const category = urlCategory || article.news_type
   const articleUrl = `${SITE_URL}/articles/${category}/${slug}`
   const imageUrl = getBestImageUrl(article)
 

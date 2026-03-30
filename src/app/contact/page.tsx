@@ -4,7 +4,9 @@ import { Mail, MessageCircle, Send } from 'lucide-react'
 export const metadata: Metadata = {
   title: 'Contact Us - Get in Touch | welomoney',
   description: 'Contact welomoney for inquiries, feedback, or support. Join our WhatsApp and Telegram communities for real-time market updates.',
-  keywords: 'contact welomoney, support, feedback, whatsapp group, telegram channel',
+  alternates: {
+    canonical: 'https://welomoney.com/contact',
+  },
 }
 
 export default function ContactPage() {

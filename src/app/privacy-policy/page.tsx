@@ -3,6 +3,9 @@ import { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Privacy Policy | welomoney',
   description: 'Privacy Policy for welomoney - Learn how we collect, use, and protect your information',
+  alternates: {
+    canonical: 'https://welomoney.com/privacy-policy',
+  },
 }
 
 export default function PrivacyPolicyPage() {

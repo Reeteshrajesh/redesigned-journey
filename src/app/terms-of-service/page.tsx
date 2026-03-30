@@ -3,6 +3,9 @@ import { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Terms of Service | welomoney',
   description: 'Terms of Service for welomoney - Read our terms and conditions for using our financial news aggregation platform.',
+  alternates: {
+    canonical: 'https://welomoney.com/terms-of-service',
+  },
 }
 
 export default function TermsOfServicePage() {

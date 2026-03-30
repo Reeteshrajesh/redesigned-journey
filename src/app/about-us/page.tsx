@@ -4,6 +4,9 @@ export const metadata: Metadata = {
   title: 'About Us | welomoney',
   description:
     'welomoney provides financial news summaries and market insights for informational purposes only. We do not provide investment advice.',
+  alternates: {
+    canonical: 'https://welomoney.com/about-us',
+  },
 }
 
 export default function AboutUsPage() {
