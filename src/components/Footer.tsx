@@ -75,7 +75,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div className="lg:col-span-2">
-            <h3 className="text-sm font-bold text-gray-900 mb-4">Quick Links</h3>
+            <p className="text-sm font-bold text-gray-900 mb-4">Quick Links</p>
             <ul className="space-y-3">
               <li><Link href="/" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Latest News</Link></li>
               <li><Link href="/recent" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Recent Updates</Link></li>
@@ -90,7 +90,7 @@ export default function Footer() {
 
           {/* Legal */}
           <div className="lg:col-span-2">
-            <h3 className="text-sm font-bold text-gray-900 mb-4">Legal</h3>
+            <p className="text-sm font-bold text-gray-900 mb-4">Legal</p>
             <ul className="space-y-3">
               <li><Link href="/privacy-policy" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Privacy Policy</Link></li>
               <li><Link href="/terms-of-service" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Terms of Service</Link></li>
@@ -103,7 +103,7 @@ export default function Footer() {
           {/* Contact & Newsletter */}
           <div className="lg:col-span-4 space-y-6">
             <div className="bg-gradient-to-br from-green-50 to-blue-50 rounded-xl p-5 border border-green-200">
-              <h3 className="text-sm font-bold text-gray-900 mb-2">Get Finance News That Matters</h3>
+              <p className="text-sm font-bold text-gray-900 mb-2">Get Finance News That Matters</p>
               <p className="text-xs text-gray-600 mb-4">Join welomoney&apos;s newsletter for real-time market updates and insights.</p>
               <div className="flex flex-col sm:flex-row gap-2">
                 <a
@@ -129,7 +129,7 @@ export default function Footer() {
               </div>
             </div>
             <div className="bg-blue-50 rounded-xl p-5">
-              <h3 className="text-sm font-bold text-gray-900 mb-2">Contact Editorial Team</h3>
+              <p className="text-sm font-bold text-gray-900 mb-2">Contact Editorial Team</p>
               <p className="text-xs text-gray-600 mb-4">Have a news tip, correction, or partnership query? Reach out to us.</p>
               <div className="flex flex-col sm:flex-row gap-2">
                 <a

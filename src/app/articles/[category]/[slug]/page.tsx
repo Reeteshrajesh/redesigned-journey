@@ -51,9 +51,10 @@ export async function generateMetadata({
   const optimizedTitle = cleanTitle;
 
   // Optimize description to 155 characters maximum (SEO best practice)
+  const rawMetaDataDescription = article.synopsis || article.summary
   const description = cleanMetadataText(
-    article.synopsis || article.summary,
-    155,
+    rawMetaDataDescription,
+    rawMetaDataDescription.length
   );
 
   // Extract relevant tags for article:tag meta
@@ -321,7 +322,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
               {/* Synopsis */}
               {article.synopsis && (
                 <div className="bg-blue-50 border-l-4 border-blue-500 p-6 mb-6 rounded-r-lg">
-                  <h2 className="text-lg font-semibold text-gray-900 mb-3 flex items-center">
+                  <p className="text-lg font-semibold text-gray-900 mb-3 flex items-center">
                     <svg
                       className="w-5 h-5 mr-2 text-blue-500"
                       fill="none"
@@ -336,7 +337,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                       />
                     </svg>
                     Synopsis
-                  </h2>
+                  </p>
                   <div className="text-gray-700 leading-relaxed prose prose-lg max-w-none">
                     <ReactMarkdown remarkPlugins={[remarkGfm]}>
                       {article.synopsis}
