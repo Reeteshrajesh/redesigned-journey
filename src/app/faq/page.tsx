@@ -13,55 +13,55 @@ export const metadata: Metadata = {
 const faqs = [
   {
     question: 'What is welomoney?',
-    answer: 'welomoney is a real-time financial news platform that provides stock market updates, IPO alerts, cryptocurrency news, and comprehensive investment insights. We deliver verified financial news from trusted sources to help investors stay informed and make better decisions.',
+    answer: 'welomoney is a platform where you can find the latest financial news in one place. It covers stock market updates, IPO news, crypto trends, and other important business topics so you can stay aware of what\'s happening in the market.',
   },
   {
     question: 'Is welomoney free to use?',
-    answer: 'Yes, welomoney is completely free to use. You can access all our financial news, market analysis, and investment insights without any subscription fees. We believe in democratizing financial information for all investors.',
+    answer: 'Yes, you don\'t have to pay anything to use welomoney. All the news and updates are available for free, so anyone can access financial information without any cost.',
   },
   {
     question: 'How often is the news updated?',
-    answer: 'Our news is updated in real-time throughout the trading day. We monitor multiple trusted sources and publish breaking financial news within minutes of occurrence. You can rely on welomoney for the latest market-moving information.',
+    answer: 'News on welomoney is updated regularly throughout the day. Whenever something important happens in the market, it gets published quickly so users can stay up to date.',
   },
   {
     question: 'Does welomoney provide investment advice?',
-    answer: 'No, welomoney does not provide personalized investment advice. We are a financial news and information platform. All content is for educational and informational purposes only. Please consult a certified financial advisor before making investment decisions.',
+    answer: 'No, welomoney does not give personal investment advice. It only shares news and information. Before investing your money, it\'s always better to talk to a financial expert.',
   },
   {
     question: 'What categories of news does welomoney cover?',
-    answer: 'welomoney covers Stock News, Market Updates, IPO News, Cryptocurrency, Commodities, Global Financial News, Budget & Policy, and General Business News. Each category is updated regularly with the latest developments.',
+    answer: 'welomoney shares different types of financial news like stock updates, IPO details, crypto news, commodities, global market updates, government policies, and general business news.',
   },
   {
     question: 'How can I stay updated with welomoney news?',
-    answer: 'You can join our WhatsApp group or Telegram channel for instant news alerts. We also publish regular updates on our website and social media channels (Twitter and LinkedIn). Visit our Contact page to join our communities.',
+    answer: 'You can stay updated by joining our WhatsApp or Telegram groups where news is shared instantly. You can also follow the website and social media pages for regular updates.',
   },
   {
     question: 'Can I trust the news on welomoney?',
-    answer: 'Yes, we source our news from verified and reputable sources. Each article includes proper attribution and we maintain strict editorial standards. However, we recommend cross-referencing important information before making investment decisions.',
+    answer: 'welomoney shares information from reliable and verified sources. However, financial markets can change rapidly, so always verify important details before making any financial decisions.',
   },
   {
     question: 'Does welomoney use AI to generate content?',
-    answer: 'Yes, some articles on welomoney are generated using AI technology. All AI-generated articles are clearly labeled and reviewed by our editorial team for accuracy. We use AI to provide timely coverage of breaking financial news while maintaining quality through human oversight. You can identify AI-generated content by the author attribution and disclosure notice.',
+    answer: 'Yes, some content is created using AI to share updates faster. But every such article is checked by the team before publishing, and it is clearly mentioned when AI is used.',
   },
   {
     question: 'What is the difference between Stock News and Market News?',
-    answer: 'Stock News focuses on individual company-specific updates like earnings, mergers, dividends, and management changes. Market News covers broader market trends, indices performance, sector movements, and macroeconomic factors affecting the overall market.',
+    answer: 'Stock news is about specific companies, like their results or major announcements. Market news talks about the bigger picture, like how the overall market or different sectors are performing.',
   },
   {
     question: 'How do I search for specific stocks or companies?',
-    answer: 'Use our Search feature (available in the top menu or footer) to search by company name, stock symbol, ticker, or keywords. You can also filter results by category and date range for more precise results.',
+    answer: 'You can use the search option on the website and type the company name or stock symbol. It helps you quickly find related news and updates.',
   },
   {
     question: 'Does welomoney have a mobile app?',
-    answer: 'Currently, welomoney is optimized as a Progressive Web App (PWA) which works seamlessly on mobile browsers. You can add it to your home screen for an app-like experience. A dedicated mobile app may be launched in the future.',
+    answer: 'Right now, there is no separate app, but the website works very well on mobile. You can open it in your browser and add it to your home screen for quick access.',
   },
   {
     question: 'What are IPO alerts and how do I get them?',
-    answer: 'IPO (Initial Public Offering) alerts notify you about upcoming and ongoing IPOs, including subscription dates, price bands, and listing information. Join our WhatsApp or Telegram communities to receive instant IPO alerts.',
+    answer: 'IPO alerts are updates about new companies launching in the stock market. You can get these alerts by joining welomoney\'s WhatsApp or Telegram groups.',
   },
   {
     question: 'How can I contact welomoney for queries or feedback?',
-    answer: 'You can reach us via email at welomoney@gmail.com, join our WhatsApp community, or connect through our Telegram channel. Visit our Contact page for all communication options. We typically respond within 24-48 hours.',
+    answer: 'If you have any questions or feedback, you can email at welomoney@gmail.com or connect through the WhatsApp or Telegram channels. We usually reply within a day or two.',
   },
 ]
 
