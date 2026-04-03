@@ -56,11 +56,11 @@ export const metadata: Metadata = {
     images: ['/og-image.png'],
   },
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
     googleBot: {
-      index: false,
-      follow: false,
+      index: true,
+      follow: true,
     },
   },
   alternates: {

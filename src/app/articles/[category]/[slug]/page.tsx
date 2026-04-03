@@ -77,10 +77,9 @@ export async function generateMetadata({
   return {
     title: `${optimizedTitle} | welomoney`,
     description,
-    // noindex until site is stable on new domain — remove when ready to index
     robots: {
-      index: false,
-      follow: false,
+      index: true,
+      follow: true,
     },
     openGraph: {
       title: cleanTitle,

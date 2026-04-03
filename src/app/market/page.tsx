@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://welomoney.com/market',
   },
-  robots: { index: false, follow: true },
+  robots: { index: true, follow: true },
 }
 
 export const revalidate = 60
